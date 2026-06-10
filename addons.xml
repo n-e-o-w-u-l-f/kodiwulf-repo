@@ -1,21 +1,22 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <addons>
-<addon id="repository.kodiwulf" name="KodiWulf Repository" version="0.0.1" provider-name="NeoWulf">
+<addon id="repository.kodiwulf" name="KodiWulf Repository" version="0.0.2" provider-name="NeoWulf">
     <requires>
         <import addon="xbmc.addon" version="12.0.0" />
     </requires>
     <extension point="xbmc.addon.repository" name="KodiWulf Repository">
-        <info compressed="false">https://n-e-o-w-u-l-f.github.io/kodiwulf-repo/addons.xml</info>
-        <checksum>https://n-e-o-w-u-l-f.github.io/kodiwulf-repo/addons.xml.md5</checksum>
-        <datadir zip="true">https://n-e-o-w-u-l-f.github.io/kodiwulf-repo/</datadir>
+        <dir>
+            <info compressed="false">https://n-e-o-w-u-l-f.github.io/kodiwulf-repo/addons.xml</info>
+            <checksum>https://n-e-o-w-u-l-f.github.io/kodiwulf-repo/addons.xml.md5</checksum>
+            <datadir zip="true">https://n-e-o-w-u-l-f.github.io/kodiwulf-repo/</datadir>
+            <hashes>false</hashes>
+        </dir>
     </extension>
     <extension point="xbmc.addon.metadata">
         <summary lang="de_DE">KodiWulf Add-on Repository</summary>
         <summary lang="en_GB">KodiWulf Add-on Repository</summary>
         <description lang="de_DE">Repository-Add-on für KodiWulf-Pakete, Add-ons und spätere Builds.</description>
         <description lang="en_GB">Repository add-on for KodiWulf packages, add-ons, and future builds.</description>
-        <disclaimer lang="de_DE">Nur Add-ons installieren, denen du vertraust. Dieses Repository ist als Grundstruktur vorbereitet.</disclaimer>
-        <disclaimer lang="en_GB">Only install add-ons you trust. This repository is prepared as a starter structure.</disclaimer>
         <platform>all</platform>
         <license>MIT</license>
         <website>https://github.com/n-e-o-w-u-l-f/kodiwulf-repo</website>
@@ -26,33 +27,4 @@
         </assets>
     </extension>
 </addon>
-
-<addon id="plugin.video.xwulf" version="10.06.2026" name="[B]xWulf[/B]" provider-name="Neowulf">
-    <requires>
-        <import addon="xbmc.python" version="3.0.0"/>
-        <import addon="script.module.requests"/>
-        <import addon="script.module.download-m3u8" optional="true"/>
-        <import addon="script.module.six"/>
-        <import addon="script.module.kodi-six"/>
-        <import addon="script.module.pyaes"/>
-        <import addon="script.module.infotagger"/>
-        <import addon="script.module.resolveurl" version="5.1.100"/>
-        <!-- for remote debug -->
-        <import addon="script.module.pydevd" optional="true"/>
-    </requires>
-    <extension point="xbmc.python.pluginsource" library="default.py">
-        <provides>video</provides>
-    </extension>
-    <extension point="xbmc.service" library="service.py" start="startup" />
-    <extension point="xbmc.addon.metadata">
-        <summary lang="de_DE">xWulf: Der xShip Fix</summary>
-        <summary lang="en_GB">xWulf: The xShip Fix</summary>
-        <assets>
-			<icon>resources/icon.png</icon>
-			<fanart>resources/fanart.jpg</fanart>
-			<banner>resources/media/banner.png</banner>
-		</assets>
-    </extension>
-</addon>
-
 </addons>

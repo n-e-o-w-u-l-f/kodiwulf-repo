@@ -2,51 +2,41 @@
 # KODIWULF UPDATE PROCESS #
 # # # # # # # # # # # # # # # # # #
 
-## 1. Add or update an add-on
-
-Place every Kodi add-on in its own folder at the repository root, for example:
+## 1. Richtigen lokalen Repository-Pfad verwenden
 
 ```text
-plugin.video.example/
-repository.kodiwulf/
+/home/deck/Projekte/n-e-o-w-u-l-f/kodiwulf-repo/
 ```
 
-Each add-on folder must contain a valid `addon.xml`.
+## 2. Add-on-ZIP-Dateien lokal ablegen
 
-## 2. Rebuild repository files
+```text
+kodiwulf-repo/
+kodiwulf-repo/zips/
+kodiwulf-repo/plugin.video.xwulf/
+kodiwulf-repo/plugin.video.vavooto/
+kodiwulf-repo/repository.kodinerds/
+kodiwulf-repo/repository.michaz/
+```
 
-Run:
+## 3. Repository lokal bauen
 
 ```bash
 python3 tools/build_repo.py
 ```
 
-This updates:
+## 4. Sicher committen und pushen
 
-```text
-addons.xml
-addons.xml.md5
-repository.kodiwulf/repository.kodiwulf-<version>.zip
-```
+Für interaktive Terminals keine Rohblöcke mit `exit 1` oder `set -e` verwenden. Nutze eine Kind-Shell und Statusvariablen.
 
-## 3. Commit and push
-
-```bash
-git add .
-git commit -m "chore(repo): rebuild Kodi repository index"
-git push
-```
-
-## 4. Enable GitHub Pages
-
-In GitHub:
+## 5. GitHub Pages aktivieren
 
 ```text
 Settings → Pages → Deploy from a branch → main → / root
 ```
 
-After publishing, the repository XML should be available at:
+Projekt-URL:
 
 ```text
-https://n-e-o-w-u-l-f.github.io/kodiwulf-repo/addons.xml
+https://n-e-o-w-u-l-f.github.io/kodiwulf-repo/
 ```

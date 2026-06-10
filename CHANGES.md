@@ -2,6 +2,14 @@
 # CHANGES #
 # # # # # # # # #
 
+## 0.0.2 - 2026-06-10
+
+- Added GitHub Pages `index.html` root page so the repository has a visible website.
+- Added static placeholder indexes for `plugin.video.vavooto`, `plugin.video.xwulf`, `repository.kodinerds`, and `repository.michaz`.
+- Added ZIP import workflow through `tools/build_repo.py` for local add-on ZIP files.
+- Added `zips/` as a local drop folder for add-on packages before rebuilding the Kodi repository index.
+- Documented the correct project Pages URL: `https://n-e-o-w-u-l-f.github.io/kodiwulf-repo/`.
+
 ## 0.0.1 - 2026-06-10
 
 - Initial KodiWulf repository skeleton.

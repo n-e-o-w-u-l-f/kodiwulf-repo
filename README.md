@@ -8,47 +8,69 @@
 
 KodiWulf repository skeleton for Kodi add-ons, modeled after a classic web-served Kodi repository layout.
 
-Reference layout checked: the example repository exposes add-on folders plus `addons.xml` and `addons.xml.md5` at the web root, and contains a repository add-on folder with `addon.xml`, `icon.png`, and a versioned repository ZIP.
+## Correct GitHub Pages URL
 
-## Public URLs after GitHub Pages is enabled
+This is a project page, so the public URL is:
+
+```text
+https://n-e-o-w-u-l-f.github.io/kodiwulf-repo/
+```
+
+Not:
+
+```text
+https://kodiwulf-repo.github.io/
+```
+
+## Kodi repository URLs
 
 ```text
 https://n-e-o-w-u-l-f.github.io/kodiwulf-repo/addons.xml
 https://n-e-o-w-u-l-f.github.io/kodiwulf-repo/addons.xml.md5
-https://n-e-o-w-u-l-f.github.io/kodiwulf-repo/repository.kodiwulf/repository.kodiwulf-0.0.1.zip
+https://n-e-o-w-u-l-f.github.io/kodiwulf-repo/repository.kodiwulf/repository.kodiwulf-0.0.2.zip
 ```
 
-## Install in Kodi
+## Expected add-ons
 
-1. Download `repository.kodiwulf/repository.kodiwulf-0.0.1.zip`.
-2. Kodi → Add-ons → Install from zip file.
-3. Select the ZIP.
-4. Then use “Install from repository” → “KodiWulf Repository”.
+```text
+plugin.video.vavooto/
+plugin.video.xwulf/
+repository.kodinerds/
+repository.michaz/
+repository.kodiwulf/
+```
 
-## Local build
+Kodi expects package ZIP files in this pattern:
+
+```text
+addon.id/addon.id-version.zip
+```
+
+Example:
+
+```text
+plugin.video.xwulf/plugin.video.xwulf-10.06.2026.zip
+repository.michaz/repository.michaz-5.0.zip
+```
+
+## Local ZIP import
+
+Put your ZIP files either in the repository root, in `zips/`, or directly inside their add-on folder.
+
+Then run:
 
 ```bash
 python3 tools/build_repo.py
 ```
 
-## Structure
+The builder will inspect ZIP files, extract `addon.xml`, place each ZIP into the correct `addon.id/` folder, rebuild `addons.xml` and generate static `index.html` pages for GitHub Pages.
+
+## GitHub Pages
+
+Enable:
 
 ```text
-kodiwulf-repo/
-├── addons.xml
-├── addons.xml.md5
-├── repository.kodiwulf/
-│   ├── addon.xml
-│   ├── icon.png
-│   ├── fanart.jpg
-│   └── repository.kodiwulf-0.0.1.zip
-├── tools/
-│   └── build_repo.py
-├── .github/workflows/
-│   └── build.yml
-├── CHANGES.md
-├── UPDATE_PROCESS.md
-├── README.md
-└── .gitignore
+Settings → Pages → Deploy from a branch → main → / root
 ```
-# kodiwulf-repo
+
+The root `index.html` exists so the website is visible in a browser. The `.nojekyll` file disables Jekyll processing for this static repository layout.
