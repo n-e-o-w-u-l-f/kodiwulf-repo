@@ -8,25 +8,24 @@ GitHub Pages:
 
 ## Root index
 
-- 📁 [plugin.video.vavooto/](plugin.video.vavooto/)
-- 📁 [plugin.video.xwulf/](plugin.video.xwulf/)
-- 📁 [repository.kodinerds/](repository.kodinerds/)
-- 📁 [repository.kodiwulf/](repository.kodiwulf/)
-- 📁 [repository.michaz/](repository.michaz/)
-- 📄 [addons.xml](addons.xml)
-- 📄 [addons.xml.md5](addons.xml.md5)
-- 📄 [index.html](index.html)
-- 📄 [.nojekyll](.nojekyll)
-- 📄 [README.md](README.md)
-- 📄 [CHANGES.md](CHANGES.md)
-- 📄 [UPDATE_PROCESS.md](UPDATE_PROCESS.md)
-- 📄 [bg.png](bg.png)
-- 📄 [.gitignore](.gitignore)
+- [DIR] [plugin.video.vavooto/](plugin.video.vavooto/)
+- [DIR] [plugin.video.xwulf/](plugin.video.xwulf/)
+- [DIR] [repository.kodinerds/](repository.kodinerds/)
+- [DIR] [repository.kodiwulf/](repository.kodiwulf/)
+- [DIR] [repository.michaz/](repository.michaz/)
+- [FILE] [addons.xml](addons.xml)
+- [FILE] [addons.xml.md5](addons.xml.md5)
+- [FILE] [bg.png](bg.png)
+- [FILE] [README.md](README.md)
+- [FILE] [CHANGES.md](CHANGES.md)
+- [FILE] [UPDATE_PROCESS.md](UPDATE_PROCESS.md)
+- [FILE] [.nojekyll](.nojekyll)
+- [FILE] [index.html](index.html)
 
-## Add-on folders
+## Add-ons
 
-- [plugin.video.vavooto](plugin.video.vavooto/) —
-- [plugin.video.xwulf](plugin.video.xwulf/) —
-- [repository.kodinerds](repository.kodinerds/) —
-- [repository.kodiwulf](repository.kodiwulf/) — KodiWulf Repository 0.0.2
-- [repository.michaz](repository.michaz/) —
+- [plugin.video.vavooto](plugin.video.vavooto/) - kasi,michaz 2026.05.03
+- [plugin.video.xwulf](plugin.video.xwulf/) - Neowulf 0.0.1
+- [repository.kodinerds](repository.kodinerds/) - Kodinerds 7.0.1.7
+- [repository.kodiwulf](repository.kodiwulf/) - NeoWulf 0.0.1
+- [repository.michaz](repository.michaz/) - Michaz 5.0

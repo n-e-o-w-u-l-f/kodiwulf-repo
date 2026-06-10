@@ -6,26 +6,20 @@
   <title>Index of /plugin.video.vavooto/</title>
   <style>
     :root {
-      --bg: #050508;
-      --panel: rgba(10, 10, 16, 0.84);
-      --panel-strong: rgba(14, 14, 22, 0.94);
-      --line: rgba(255, 255, 255, 0.13);
-      --text: #f1f1f7;
-      --muted: #a7a7b5;
-      --accent: #ff3030;
-      --accent-2: #8be9fd;
-      --good: #8cffbf;
-      --warn: #ffbf69;
-      --shadow: rgba(0, 0, 0, 0.68);
+      --bg: #050506;
+      --panel: rgba(9, 9, 13, 0.88);
+      --panel2: rgba(14, 14, 21, 0.95);
+      --line: rgba(255,255,255,0.14);
+      --text: #f4f4f8;
+      --muted: #aaaab8;
+      --red: #ff3030;
+      --cyan: #8be9fd;
+      --green: #98ffbb;
+      --yellow: #ffcc66;
+      --shadow: rgba(0,0,0,0.72);
     }
-
     * { box-sizing: border-box; }
-
-    html {
-      min-height: 100%;
-      background: var(--bg);
-    }
-
+    html { min-height: 100%; background: var(--bg); }
     body {
       min-height: 100vh;
       margin: 0;
@@ -33,218 +27,82 @@
       font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       line-height: 1.55;
       background:
-        linear-gradient(90deg, rgba(5,5,8,0.96), rgba(5,5,8,0.72), rgba(5,5,8,0.96)),
-        linear-gradient(180deg, rgba(0,0,0,0.82), rgba(0,0,0,0.92)),
-        url("bg.png");
+        radial-gradient(circle at 20% 10%, rgba(255,48,48,0.20), transparent 34%),
+        radial-gradient(circle at 85% 25%, rgba(139,233,253,0.13), transparent 30%),
+        linear-gradient(90deg, rgba(5,5,6,0.98), rgba(5,5,6,0.76), rgba(5,5,6,0.98)),
+        linear-gradient(180deg, rgba(0,0,0,0.84), rgba(0,0,0,0.95)),
+        url("../bg.png");
       background-size: cover;
       background-position: center center;
       background-attachment: fixed;
     }
-
-    a {
-      color: var(--accent-2);
-      text-decoration: none;
-      font-weight: 650;
-    }
-
-    a:hover {
-      color: #ffffff;
-      text-decoration: underline;
-    }
-
-    main {
-      width: min(1180px, calc(100% - 32px));
-      margin: 0 auto;
-      padding: 34px 0 56px;
-    }
-
+    a { color: var(--cyan); text-decoration: none; font-weight: 700; }
+    a:hover { color: #fff; text-decoration: underline; }
+    main { width: min(1180px, calc(100% - 32px)); margin: 0 auto; padding: 34px 0 58px; }
     .hero {
       border: 1px solid var(--line);
-      border-radius: 26px;
-      padding: clamp(26px, 5vw, 54px);
-      background:
-        radial-gradient(circle at top left, rgba(255,48,48,0.24), transparent 34%),
-        radial-gradient(circle at bottom right, rgba(139,233,253,0.13), transparent 34%),
-        var(--panel);
-      box-shadow: 0 28px 80px var(--shadow);
+      border-radius: 28px;
+      padding: clamp(28px,5vw,58px);
+      background: linear-gradient(135deg, rgba(255,48,48,0.16), transparent 42%), linear-gradient(315deg, rgba(139,233,253,0.10), transparent 42%), var(--panel);
+      box-shadow: 0 30px 90px var(--shadow);
       backdrop-filter: blur(10px);
-      margin-bottom: 22px;
+      margin-bottom: 18px;
     }
-
-    .hero.compact {
-      padding: 28px;
-    }
-
-    .eyebrow {
-      margin: 0 0 10px;
-      color: var(--accent);
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      font-size: 0.78rem;
-      font-weight: 800;
-    }
-
-    h1 {
-      margin: 0;
-      font-size: clamp(2rem, 7vw, 4.6rem);
-      line-height: 0.96;
-      letter-spacing: -0.06em;
-    }
-
-    .x {
-      color: var(--accent);
-      text-shadow: 0 0 22px rgba(255,48,48,0.65);
-    }
-
-    .subtitle {
-      max-width: 780px;
-      margin: 18px 0 0;
-      color: var(--muted);
-      font-size: 1.04rem;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 14px;
-      margin: 18px 0;
-    }
-
-    .card, .panel {
-      border: 1px solid var(--line);
-      border-radius: 18px;
-      background: var(--panel-strong);
-      box-shadow: 0 18px 50px var(--shadow);
-      backdrop-filter: blur(10px);
-    }
-
-    .card {
-      padding: 18px;
-    }
-
-    .card h2 {
-      margin: 0 0 10px;
-      font-size: 1.05rem;
-    }
-
-    .card p {
-      margin: 0;
-      color: var(--muted);
-    }
-
-    .panel {
-      overflow: hidden;
-      margin-top: 18px;
-    }
-
-    .panel-head {
-      padding: 18px 20px;
-      border-bottom: 1px solid var(--line);
-      display: flex;
-      justify-content: space-between;
-      gap: 16px;
-      align-items: center;
-    }
-
-    .panel-head h2 {
-      margin: 0;
-      font-size: 1.15rem;
-    }
-
-    .pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      padding: 6px 11px;
-      color: var(--muted);
-      background: rgba(255,255,255,0.04);
-      font-size: 0.82rem;
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-    }
-
-    th, td {
-      padding: 12px 16px;
-      border-bottom: 1px solid rgba(255,255,255,0.09);
-      text-align: left;
-      vertical-align: middle;
-    }
-
-    th {
-      color: #ffffff;
-      font-size: 0.78rem;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      background: rgba(255,255,255,0.04);
-    }
-
-    td {
-      color: var(--muted);
-    }
-
-    tr:hover td {
-      background: rgba(255,255,255,0.035);
-      color: var(--text);
-    }
-
-    .ico {
-      width: 42px;
-      text-align: center;
-    }
-
-    .status-ok { color: var(--good); }
-    .status-warn { color: var(--warn); }
-
-    .urls {
-      padding: 16px 20px 20px;
-      color: var(--muted);
-      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
-      white-space: pre-wrap;
-      word-break: break-all;
-    }
-
-    footer {
-      margin-top: 22px;
-      color: var(--muted);
-      font-size: 0.88rem;
-      text-align: center;
-    }
-
+    .hero.compact { padding: 28px; }
+    .eyebrow { margin: 0 0 12px; color: var(--red); text-transform: uppercase; letter-spacing: .18em; font-size: .78rem; font-weight: 900; }
+    h1 { margin: 0; font-size: clamp(2.2rem, 7vw, 5rem); line-height: .95; letter-spacing: -.065em; }
+    .x { color: var(--red); text-shadow: 0 0 24px rgba(255,48,48,.72); }
+    .subtitle { max-width: 860px; margin: 18px 0 0; color: var(--muted); font-size: 1.04rem; }
+    .grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin: 18px 0; }
+    .card, .panel { border: 1px solid var(--line); border-radius: 18px; background: var(--panel2); box-shadow: 0 18px 55px var(--shadow); backdrop-filter: blur(10px); }
+    .card { padding: 18px; }
+    .card h2 { margin: 0 0 10px; font-size: 1.05rem; }
+    .card p { margin: 0; color: var(--muted); }
+    .panel { overflow: hidden; margin-top: 18px; }
+    .panel-head { padding: 18px 20px; border-bottom: 1px solid var(--line); display: flex; justify-content: space-between; gap: 16px; align-items: center; }
+    .panel-head h2 { margin: 0; font-size: 1.15rem; }
+    .pill { border: 1px solid var(--line); border-radius: 999px; padding: 6px 11px; color: var(--muted); background: rgba(255,255,255,.04); font-size: .82rem; white-space: nowrap; }
+    table { width: 100%; border-collapse: collapse; }
+    th, td { padding: 12px 16px; border-bottom: 1px solid rgba(255,255,255,.09); text-align: left; vertical-align: middle; }
+    th { color: #fff; font-size: .78rem; text-transform: uppercase; letter-spacing: .08em; background: rgba(255,255,255,.045); }
+    td { color: var(--muted); }
+    tr:hover td { background: rgba(255,255,255,.04); color: var(--text); }
+    .type { width: 68px; text-align: center; color: var(--yellow); font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+    .warn { color: var(--yellow); font-weight: 800; }
+    .urls { padding: 16px 20px 20px; color: var(--muted); font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; white-space: pre-wrap; word-break: break-all; }
+    small { color: var(--muted); }
+    footer { margin-top: 22px; color: var(--muted); font-size: .88rem; text-align: center; }
     @media (max-width: 820px) {
       .grid { grid-template-columns: 1fr; }
       th:nth-child(3), td:nth-child(3) { display: none; }
       main { width: min(100% - 20px, 1180px); padding-top: 14px; }
+      .panel-head { align-items: flex-start; flex-direction: column; }
     }
   </style>
 </head>
 <body>
 <main>
-
-<header class="hero compact">
-  <div>
+  <header class="hero compact">
     <p class="eyebrow">KodiWulf Repository</p>
     <h1>Index of /plugin.video.vavooto/</h1>
-    <p class="subtitle">plugin.video.vavooto </p>
-  </div>
-</header>
-
-<section class="panel">
-  <table class="index-table">
-    <thead>
-      <tr><th></th><th>Name</th><th>Last modified</th><th>Size</th></tr>
-    </thead>
-    <tbody>
-      <tr><td class="ico">↩</td><td><a href="../">Parent Directory</a></td><td>-</td><td>-</td></tr><tr><td class="ico">📄</td><td><a href="index.html">index.html</a></td><td>2026-06-10 17:56:58</td><td>872 B</td></tr><tr><td class="ico">📦</td><td><a href="plugin.video.vavooto-2026.05.03.zip">plugin.video.vavooto-2026.05.03.zip</a></td><td>2026-06-10 05:33:38</td><td>50.48 KB</td></tr>
-    </tbody>
-  </table>
-</section>
-
-<footer>Generated by KodiWulf Dark Index Generator · 2026-06-10 18:34:03 UTC</footer>
+    <p class="subtitle">kasi,michaz 2026.05.03</p>
+  </header>
+  <section class="panel">
+    <div class="panel-head">
+      <h2>Directory listing</h2>
+      <span class="pill">plugin.video.vavooto</span>
+    </div>
+    <table>
+      <thead><tr><th></th><th>Name</th><th>Last modified</th><th>Size</th></tr></thead>
+      <tbody>
+        <tr><td class="type">UP</td><td><a href="../">Parent Directory</a></td><td>-</td><td>-</td></tr>
+        <tr><td class="type">FILE</td><td><a href="addon.xml">addon.xml</a></td><td>2026-06-10 20:38:43</td><td>967B</td></tr>
+        <tr><td class="type">FILE</td><td><a href="icon.png">icon.png</a></td><td>2026-06-10 20:38:43</td><td>20KB</td></tr>
+        <tr><td class="type">ZIP</td><td><a href="plugin.video.vavooto-2026.05.03.zip">plugin.video.vavooto-2026.05.03.zip</a></td><td>2026-06-10 05:33:38</td><td>51KB</td></tr>
+      </tbody>
+    </table>
+  </section>
+  <footer>Generated by KodiWulf Dark Index Builder - 2026-06-10 18:52:25 UTC</footer>
 </main>
 </body>
 </html>

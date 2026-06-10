@@ -11,6 +11,8 @@ Thumbs.db
 .idea/
 .vscode/
 # Build- und Test-Artefakte
+zips/
+tools/
 Build/
 BUILD/
 test/
