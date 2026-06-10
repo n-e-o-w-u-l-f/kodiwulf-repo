@@ -1,0 +1,24 @@
+# KodiWulf repository build output
+.build/
+build/
+dist/
+*.log
+*.tmp
+
+# OS/editor noise
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+# Build- und Test-Artefakte
+Build/
+BUILD/
+test/
+tests/tmp/
+# Python/Kodi Cache-Dateien
+__pycache__/
+*.pyc
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+# Betriebssystem-Dateien
