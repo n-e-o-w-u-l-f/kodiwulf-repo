@@ -2,174 +2,39 @@
 <html lang="de">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>KodiWulf Repository</title>
-  <style>
-    :root {
-      --bg: #050506;
-      --panel: rgba(9, 9, 13, 0.88);
-      --panel2: rgba(14, 14, 21, 0.95);
-      --line: rgba(255,255,255,0.14);
-      --text: #f4f4f8;
-      --muted: #aaaab8;
-      --red: #ff3030;
-      --cyan: #8be9fd;
-      --green: #98ffbb;
-      --yellow: #ffcc66;
-      --shadow: rgba(0,0,0,0.72);
-    }
-    * { box-sizing: border-box; }
-    html { min-height: 100%; background: var(--bg); }
-    body {
-      min-height: 100vh;
-      margin: 0;
-      color: var(--text);
-      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      line-height: 1.55;
-      background:
-        radial-gradient(circle at 20% 10%, rgba(255,48,48,0.20), transparent 34%),
-        radial-gradient(circle at 85% 25%, rgba(139,233,253,0.13), transparent 30%),
-        linear-gradient(90deg, rgba(5,5,6,0.98), rgba(5,5,6,0.76), rgba(5,5,6,0.98)),
-        linear-gradient(180deg, rgba(0,0,0,0.84), rgba(0,0,0,0.95)),
-        url("bg.png");
-      background-size: cover;
-      background-position: center center;
-      background-attachment: fixed;
-    }
-    a { color: var(--cyan); text-decoration: none; font-weight: 700; }
-    a:hover { color: #fff; text-decoration: underline; }
-    main { width: min(1180px, calc(100% - 32px)); margin: 0 auto; padding: 34px 0 58px; }
-    .hero {
-      border: 1px solid var(--line);
-      border-radius: 28px;
-      padding: clamp(28px,5vw,58px);
-      background: linear-gradient(135deg, rgba(255,48,48,0.16), transparent 42%), linear-gradient(315deg, rgba(139,233,253,0.10), transparent 42%), var(--panel);
-      box-shadow: 0 30px 90px var(--shadow);
-      backdrop-filter: blur(10px);
-      margin-bottom: 18px;
-    }
-    .hero.compact { padding: 28px; }
-    .eyebrow { margin: 0 0 12px; color: var(--red); text-transform: uppercase; letter-spacing: .18em; font-size: .78rem; font-weight: 900; }
-    h1 { margin: 0; font-size: clamp(2.2rem, 7vw, 5rem); line-height: .95; letter-spacing: -.065em; }
-    .x { color: var(--red); text-shadow: 0 0 24px rgba(255,48,48,.72); }
-    .subtitle { max-width: 860px; margin: 18px 0 0; color: var(--muted); font-size: 1.04rem; }
-    .grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin: 18px 0; }
-    .card, .panel { border: 1px solid var(--line); border-radius: 18px; background: var(--panel2); box-shadow: 0 18px 55px var(--shadow); backdrop-filter: blur(10px); }
-    .card { padding: 18px; }
-    .card h2 { margin: 0 0 10px; font-size: 1.05rem; }
-    .card p { margin: 0; color: var(--muted); }
-    .panel { overflow: hidden; margin-top: 18px; }
-    .panel-head { padding: 18px 20px; border-bottom: 1px solid var(--line); display: flex; justify-content: space-between; gap: 16px; align-items: center; }
-    .panel-head h2 { margin: 0; font-size: 1.15rem; }
-    .pill { border: 1px solid var(--line); border-radius: 999px; padding: 6px 11px; color: var(--muted); background: rgba(255,255,255,.04); font-size: .82rem; white-space: nowrap; }
-    table { width: 100%; border-collapse: collapse; }
-    th, td { padding: 12px 16px; border-bottom: 1px solid rgba(255,255,255,.09); text-align: left; vertical-align: middle; }
-    th { color: #fff; font-size: .78rem; text-transform: uppercase; letter-spacing: .08em; background: rgba(255,255,255,.045); }
-    td { color: var(--muted); }
-    tr:hover td { background: rgba(255,255,255,.04); color: var(--text); }
-    .type { width: 68px; text-align: center; color: var(--yellow); font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
-    .warn { color: var(--yellow); font-weight: 800; }
-    .urls { padding: 16px 20px 20px; color: var(--muted); font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; white-space: pre-wrap; word-break: break-all; }
-    small { color: var(--muted); }
-    footer { margin-top: 22px; color: var(--muted); font-size: .88rem; text-align: center; }
-    @media (max-width: 820px) {
-      .grid { grid-template-columns: 1fr; }
-      th:nth-child(3), td:nth-child(3) { display: none; }
-      main { width: min(100% - 20px, 1180px); padding-top: 14px; }
-      .panel-head { align-items: flex-start; flex-direction: column; }
-    }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-<main>
-  <header class="hero">
-    <p class="eyebrow">GitHub Pages Kodi Repository</p>
-    <h1><span class="x">x</span>Wulf Repository</h1>
-    <p class="subtitle">Dunkler statischer Repository-Index nach Directory-Listing-Vorbild. Diese Seite verlinkt echte Dateien und echte Ordner aus dem GitHub-Pages-Repository.</p>
-  </header>
-  <section class="grid">
-    <article class="card"><h2>Repository XML</h2><p><a href="addons.xml">addons.xml</a></p></article>
-    <article class="card"><h2>Checksum</h2><p><a href="addons.xml.md5">addons.xml.md5</a></p></article>
-    <article class="card"><h2>Kodi Repository Add-on</h2><p><a href="repository.kodiwulf/">repository.kodiwulf/</a></p></article>
-  </section>
-  <section class="panel">
-    <div class="panel-head">
-      <h2>Index of /kodiwulf-repo/</h2>
-      <span class="pill">bg.png background active</span>
-    </div>
-    <table>
-      <thead><tr><th></th><th>Name</th><th>Last modified</th><th>Size</th></tr></thead>
-      <tbody>
-        <tr><td class="type">DIR</td><td><a href="plugin.video.vavooto/">plugin.video.vavooto/</a></td><td>2026-06-10 20:38:43</td><td>-</td></tr>
-        <tr><td class="type">DIR</td><td><a href="plugin.video.xwulf/">plugin.video.xwulf/</a></td><td>2026-06-10 20:42:38</td><td>-</td></tr>
-        <tr><td class="type">DIR</td><td><a href="repository.kodinerds/">repository.kodinerds/</a></td><td>2026-06-10 20:38:43</td><td>-</td></tr>
-        <tr><td class="type">DIR</td><td><a href="repository.kodiwulf/">repository.kodiwulf/</a></td><td>2026-06-10 20:38:43</td><td>-</td></tr>
-        <tr><td class="type">DIR</td><td><a href="repository.michaz/">repository.michaz/</a></td><td>2026-06-10 20:38:43</td><td>-</td></tr>
-        <tr><td class="type">FILE</td><td><a href="addons.xml">addons.xml</a></td><td>2026-06-10 20:38:43</td><td>12KB</td></tr>
-        <tr><td class="type">FILE</td><td><a href="addons.xml.md5">addons.xml.md5</a></td><td>2026-06-10 20:38:43</td><td>32B</td></tr>
-        <tr><td class="type">FILE</td><td><a href="bg.png">bg.png</a></td><td>2026-06-10 18:57:58</td><td>3,8MB</td></tr>
-        <tr><td class="type">FILE</td><td><a href="README.md">README.md</a></td><td>2026-06-10 17:56:58</td><td>1,7KB</td></tr>
-        <tr><td class="type">FILE</td><td><a href="CHANGES.md">CHANGES.md</a></td><td>2026-06-10 17:56:58</td><td>831B</td></tr>
-        <tr><td class="type">FILE</td><td><a href="UPDATE_PROCESS.md">UPDATE_PROCESS.md</a></td><td>2026-06-10 17:56:58</td><td>854B</td></tr>
-        <tr><td class="type">FILE</td><td><a href=".nojekyll">.nojekyll</a></td><td>2026-06-10 20:34:03</td><td>0B</td></tr>
-        <tr><td class="type">FILE</td><td><a href="index.md">index.md</a></td><td>2026-06-10 20:34:03</td><td>1,1KB</td></tr>
-      </tbody>
-    </table>
-  </section>
-  <section class="panel">
-    <div class="panel-head">
-      <h2>Kodi Add-ons</h2>
-      <span class="pill">real repository scan</span>
-    </div>
-    <table>
-      <thead><tr><th></th><th>Add-on</th><th>Version</th><th>ZIP</th></tr></thead>
-      <tbody>
-        <tr>
-          <td class="type">DIR</td>
-          <td><a href="plugin.video.vavooto/">plugin.video.vavooto</a><br><small>kasi,michaz</small></td>
-          <td>2026.05.03</td>
-          <td><a href="plugin.video.vavooto/plugin.video.vavooto-2026.05.03.zip">plugin.video.vavooto-2026.05.03.zip</a> </td>
-        </tr>
-        <tr>
-          <td class="type">DIR</td>
-          <td><a href="plugin.video.xwulf/">plugin.video.xwulf</a><br><small>Neowulf</small></td>
-          <td>0.0.1</td>
-          <td><a href="plugin.video.xwulf/plugin.video.xwulf-0.0.1.zip">plugin.video.xwulf-0.0.1.zip</a> </td>
-        </tr>
-        <tr>
-          <td class="type">DIR</td>
-          <td><a href="repository.kodinerds/">repository.kodinerds</a><br><small>Kodinerds</small></td>
-          <td>7.0.1.7</td>
-          <td><a href="repository.kodinerds/repository.kodinerds-7.0.1.7.zip">repository.kodinerds-7.0.1.7.zip</a> </td>
-        </tr>
-        <tr>
-          <td class="type">DIR</td>
-          <td><a href="repository.kodiwulf/">repository.kodiwulf</a><br><small>NeoWulf</small></td>
-          <td>0.0.1</td>
-          <td><a href="repository.kodiwulf/repository.kodiwulf-0.0.1.zip">repository.kodiwulf-0.0.1.zip</a> </td>
-        </tr>
-        <tr>
-          <td class="type">DIR</td>
-          <td><a href="repository.michaz/">repository.michaz</a><br><small>Michaz</small></td>
-          <td>5.0</td>
-          <td><a href="repository.michaz/repository.michaz-5.0.zip">repository.michaz-5.0.zip</a> </td>
-        </tr>
-      </tbody>
-    </table>
-  </section>
-  <section class="panel">
-    <div class="panel-head">
-      <h2>Kodi URLs</h2>
-      <span class="pill">for repository.kodiwulf</span>
-    </div>
-    <div class="urls">
-https://n-e-o-w-u-l-f.github.io/kodiwulf-repo/
-https://n-e-o-w-u-l-f.github.io/kodiwulf-repo/addons.xml
-https://n-e-o-w-u-l-f.github.io/kodiwulf-repo/addons.xml.md5
-https://n-e-o-w-u-l-f.github.io/kodiwulf-repo/repository.kodiwulf/
-    </div>
-  </section>
-  <footer>Generated by KodiWulf Dark Index Builder - 2026-06-10 18:52:26 UTC</footer>
-</main>
+  <h1>KodiWulf Repository</h1>
+
+  <p>
+    Für Kodi: <strong>Install from ZIP</strong> soll die Repository-ZIP installieren.
+    Danach verwendet Kodi <code>addons.xml</code> und <code>addons.xml.md5</code>.
+  </p>
+
+  <h2>Repository Dateien</h2>
+  <ul>
+    <li><a href="addons.xml">addons.xml</a></li>
+    <li><a href="addons.xml.md5">addons.xml.md5</a></li>
+  </ul>
+
+  <h2>ZIP Downloads</h2>
+  <table border="1" cellpadding="6" cellspacing="0">
+    <thead>
+      <tr>
+        <th>Add-on</th>
+        <th>Version</th>
+        <th>ZIP</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>plugin.video.vavooto</td><td>2026.05.03</td><td><a href="plugin.video.vavooto/plugin.video.vavooto-2026.05.03.zip">plugin.video.vavooto-2026.05.03.zip</a></td></tr>
+      <tr><td>plugin.video.xwulf</td><td>0.0.1</td><td><a href="plugin.video.xwulf/plugin.video.xwulf-0.0.1.zip">plugin.video.xwulf-0.0.1.zip</a></td></tr>
+      <tr><td>repository.kodinerds</td><td>7.0.1.7</td><td><a href="repository.kodinerds/repository.kodinerds-7.0.1.7.zip">repository.kodinerds-7.0.1.7.zip</a></td></tr>
+      <tr><td>repository.kodiwulf</td><td>0.0.1</td><td><a href="repository.kodiwulf/repository.kodiwulf-0.0.1.zip">repository.kodiwulf-0.0.1.zip</a></td></tr>
+      <tr><td>repository.michaz</td><td>5.0</td><td><a href="repository.michaz/repository.michaz-5.0.zip">repository.michaz-5.0.zip</a></td></tr>
+    </tbody>
+  </table>
 </body>
 </html>
