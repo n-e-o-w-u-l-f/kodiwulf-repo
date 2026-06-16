@@ -1,209 +1,220 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <addons>
-<addon id="plugin.video.vavooto" name="VAVOO.TO" version="2026.05.03" provider-name="kasi,michaz">
-	<requires>
-		<import addon="xbmc.python" version="3.0.1"/>
-		<import addon="script.module.requests"/>
-		<import addon="script.module.resolveurl"/>
-		<import addon="script.module.dateutil"/>
-		<import addon="inputstream.adaptive"/> 
-		<import addon="inputstream.ffmpegdirect"/> 
-		<import addon="script.module.infotagger"/>
-	</requires>
-	<extension point="xbmc.python.pluginsource" library="resources/main.py">
-		<provides>video</provides>
-	</extension>
-	<extension point="xbmc.python.module" library="resources" />
-	<extension point="xbmc.addon.metadata">
-		<summary lang="de_DE">VAVOO.TO Video Add-on</summary>
-		<description lang="de_DE">Video-Add-on für Live-TV, Filme und Serien mit VAVOO- und Stalker-Quellen.</description>
-		<platform>all</platform>
-		<assets>
-			<icon>icon.png</icon>
-		</assets>
-	</extension>
-</addon>
+<!-- REPOSITORIES-->
+<!-- KodiNerds -->
+    <addon id="repository.kodinerds" name="Kodinerds Addon Repo" version="7.0.1.7" provider-name="Kodinerds">
+        <requires>
+            <import addon="xbmc.addon" version="12.0.0"/>
+        </requires>
+        <extension point="xbmc.addon.repository" name="Kodinerds Addon Repo">
+            <dir>
+                <info compressed="true">https://repo.kodinerds.net/addons/addons.xml</info>
+                <checksum>https://repo.kodinerds.net/addons/addons.xml.md5</checksum>
+                <datadir zip="true">https://repo.kodinerds.net/addons</datadir>
+                <hashes>false</hashes>
+            </dir>
+            <dir minversion="21.9.9" maxversion="22.9.0">
+                <info compressed="true">https://repo.kodinerds.net/addons/piers/addons.xml</info>
+                <checksum>https://repo.kodinerds.net/addons/piers/addons.xml.md5</checksum>
+                <datadir zip="true">https://repo.kodinerds.net/addons/piers/zip/</datadir>
+                <hashes>false</hashes>
+            </dir>
+            <dir minversion="21.0.0" maxversion="22.9.0">
+                <info compressed="true">https://repo.kodinerds.net/addons/omega/addons.xml</info>
+                <checksum>https://repo.kodinerds.net/addons/omega/addons.xml.md5</checksum>
+                <datadir zip="true">https://repo.kodinerds.net/addons/omega/zip/</datadir>
+                <hashes>false</hashes>
+            </dir>
+            <dir minversion="20.0.0" maxversion="22.9.0">
+                <info compressed="true">https://repo.kodinerds.net/addons/nexus/addons.xml</info>
+                <checksum>https://repo.kodinerds.net/addons/nexus/addons.xml.md5</checksum>
+                <datadir zip="true">https://repo.kodinerds.net/addons/nexus/zip/</datadir>
+                <hashes>false</hashes>
+            </dir>
+            <dir minversion="19.0.0" maxversion="22.9.0">
+                <info compressed="true">https://repo.kodinerds.net/addons/matrix/addons.xml</info>
+                <checksum>https://repo.kodinerds.net/addons/matrix/addons.xml.md5</checksum>
+                <datadir zip="true">https://repo.kodinerds.net/addons/matrix/zip/</datadir>
+                <hashes>false</hashes>
+            </dir>
+            <dir minversion="18.0.0" maxversion="18.9.0">
+                <info compressed="true">https://repo.kodinerds.net/addons/leia/addons.xml</info>
+                <checksum>https://repo.kodinerds.net/addons/leia/addons.xml.md5</checksum>
+                <datadir zip="true">https://repo.kodinerds.net/addons/leia/zip/</datadir>
+                <hashes>false</hashes>
+            </dir>
+            <dir minversion="17.0.0" maxversion="18.9.0">
+                <info compressed="true">https://repo.kodinerds.net/addons/krypton/addons.xml</info>
+                <checksum>https://repo.kodinerds.net/addons/krypton/addons.xml.md5</checksum>
+                <datadir zip="true">https://repo.kodinerds.net/addons/krypton/zip/</datadir>
+                <hashes>false</hashes>
+            </dir>
+            <dir minversion="16.0.0" maxversion="18.9.0">
+                <info compressed="true">https://repo.kodinerds.net/addons/jarvis/addons.xml</info>
+                <checksum>https://repo.kodinerds.net/addons/jarvis/addons.xml.md5</checksum>
+                <datadir zip="true">https://repo.kodinerds.net/addons/jarvis/zip/</datadir>
+                <hashes>false</hashes>
+            </dir>
+            <dir minversion="15.0.0" maxversion="18.9.0">
+                <info compressed="true">https://repo.kodinerds.net/addons/isengard/addons.xml</info>
+                <checksum>https://repo.kodinerds.net/addons/isengard/addons.xml.md5</checksum>
+                <datadir zip="true">https://repo.kodinerds.net/addons/isengard/zip/</datadir>
+                <hashes>false</hashes>
+            </dir>
+            <dir minversion="14.0.0" maxversion="18.9.0">
+                <info compressed="true">https://repo.kodinerds.net/addons/helix/addons.xml</info>
+                <checksum>https://repo.kodinerds.net/addons/helix/addons.xml.md5</checksum>
+                <datadir zip="true">https://repo.kodinerds.net/addons/helix/zip/</datadir>
+                <hashes>false</hashes>
+            </dir>
+            <dir minversion="13.0.0" maxversion="18.9.0">
+                <info compressed="true">https://repo.kodinerds.net/addons/gotham/addons.xml</info>
+                <checksum>https://repo.kodinerds.net/addons/gotham/addons.xml.md5</checksum>
+                <datadir zip="true">https://repo.kodinerds.net/addons/gotham/zip/</datadir>
+                <hashes>false</hashes>
+            </dir>
+        </extension>
+        <extension point="xbmc.addon.metadata">
+            <summary lang="en">Addon repository of the Kodinerds Community</summary>
+            <description lang="en">The 'Nerdsrepo' is the Repository of the german Kodi Community 'Kodinerds' (www.kodinerds.net). Most of the hosted Addons here are active developed and supported by the members of the Community. Nerdsrepo is an unofficial Repository of the Kodi Media Center Software.</description>
+            <summary lang="de">Addon Repository der Kodinerds Community</summary>
+            <description lang="de">Das 'Nerdsrepo' ist das Addon Repository der deutschen Kodi-Community 'Kodinerds' (www.kodinerds.net). Die meisten der hier im Nerdsrepo gehosteten Addons werden von den Mitgliedern der Community aktiv entwickelt und unterstützt. Das Nerdsrepo ist ein unoffizielles Repository der Kodi Media Center Software.</description>
+            <disclaimer/>
+            <platform>all</platform>
+            <assets>
+                <icon>icon.png</icon>
+                <fanart>fanart.jpg</fanart>
+            </assets>
+        </extension>
+    </addon>
 
-<addon id="plugin.video.xwulf" version="0.0.1" name="[B][COLOR red]x[/COLOR]Wulf[/B]" provider-name="Neowulf">
-    <requires>
-        <import addon="xbmc.python" version="3.0.0"/>
-        <import addon="script.module.requests"/>
-        <import addon="script.module.download-m3u8" optional="true"/>
-        <import addon="script.module.six"/>
-        <import addon="script.module.kodi-six"/>
-        <import addon="script.module.pyaes"/>
-        <import addon="script.module.infotagger"/>
-        <import addon="script.module.resolveurl" version="5.1.100"/>
-        <!-- for remote debug -->
-        <import addon="script.module.pydevd" optional="true"/>
-    </requires>
-    <extension point="xbmc.python.pluginsource" library="default.py">
-        <provides>video</provides>
-    </extension>
-    <extension point="xbmc.service" library="service.py" start="startup" />
-    <extension point="xbmc.addon.metadata">
-        <summary lang="de_DE">xWulf: Der xShip Fix</summary>
-        <summary lang="en_GB">xWulf: The xShip Fix</summary>
-        <assets>
-			<icon>resources/icon.png</icon>
-			<fanart>resources/fanart.jpg</fanart>
-			<banner>resources/media/banner.png</banner>
-		</assets>
-    </extension>
-</addon>
+<!-- KodiWulf Repository-->
+    <addon id="repository.kodiwulf" name="KodiWulf Repository" version="0.0.1" provider-name="NeoWulf">
+        <requires>
+            <import addon="xbmc.addon" version="12.0.0"/>
+        </requires>
+        <extension point="xbmc.addon.repository" name="KodiWulf Repository">
+            <dir>
+                <info compressed="false">https://n-e-o-w-u-l-f.github.io/kodiwulf-repo/addons.xml</info>
+                <checksum>https://n-e-o-w-u-l-f.github.io/kodiwulf-repo/addons.xml.md5</checksum>
+                <datadir zip="true">https://n-e-o-w-u-l-f.github.io/kodiwulf-repo/</datadir>
+            </dir>
+        </extension>
+        <extension point="xbmc.addon.metadata">
+            <summary lang="de_DE">KodiWulf Add-on Repository</summary>
+            <summary lang="en_GB">KodiWulf Add-on Repository</summary>
+            <description lang="de_DE">Repository add-on für KodiWulf-Pakete, Add-ons und spätere Builds.</description>
+            <description lang="en_GB">Repository add-on for KodiWulf packages, add-ons, and future builds.</description>
+            <disclaimer lang="de_DE">Nur Add-ons installieren, denen du vertraust. Dieses Repository ist als Grundstruktur vorbereitet.</disclaimer>
+            <disclaimer lang="en_GB">Only install add-ons you trust. This repository is prepared as a starter structure.</disclaimer>
+            <platform>all</platform>
+            <license>MIT</license>
+            <website>https://github.com/n-e-o-w-u-l-f/kodiwulf-repo</website>
+            <source>https://github.com/n-e-o-w-u-l-f/kodiwulf-repo</source>
+            <assets>
+                <icon>icon.png</icon>
+                <fanart>fanart.jpg</fanart>
+            </assets>
+        </extension>
+    </addon>
 
-<addon id="repository.kodinerds" name="Kodinerds Addon Repo" version="7.0.1.7" provider-name="Kodinerds">
-    <requires>
-        <import addon="xbmc.addon" version="12.0.0"/>
-    </requires>
-    <extension point="xbmc.addon.repository" name="Kodinerds Addon Repo">
-        <dir>
-            <info compressed="true">https://repo.kodinerds.net/addons/addons.xml</info>
-            <checksum>https://repo.kodinerds.net/addons/addons.xml.md5</checksum>
-            <datadir zip="true">https://repo.kodinerds.net/addons</datadir>
-            <hashes>false</hashes>
-        </dir>
-        <dir minversion="21.9.9" maxversion="22.9.0">
-            <info compressed="true">https://repo.kodinerds.net/addons/piers/addons.xml</info>
-            <checksum>https://repo.kodinerds.net/addons/piers/addons.xml.md5</checksum>
-            <datadir zip="true">https://repo.kodinerds.net/addons/piers/zip/</datadir>
-            <hashes>false</hashes>
-        </dir>
-        <dir minversion="21.0.0" maxversion="22.9.0">
-            <info compressed="true">https://repo.kodinerds.net/addons/omega/addons.xml</info>
-            <checksum>https://repo.kodinerds.net/addons/omega/addons.xml.md5</checksum>
-            <datadir zip="true">https://repo.kodinerds.net/addons/omega/zip/</datadir>
-            <hashes>false</hashes>
-        </dir>
-        <dir minversion="20.0.0" maxversion="22.9.0">
-            <info compressed="true">https://repo.kodinerds.net/addons/nexus/addons.xml</info>
-            <checksum>https://repo.kodinerds.net/addons/nexus/addons.xml.md5</checksum>
-            <datadir zip="true">https://repo.kodinerds.net/addons/nexus/zip/</datadir>
-            <hashes>false</hashes>
-        </dir>
-        <dir minversion="19.0.0" maxversion="22.9.0">
-            <info compressed="true">https://repo.kodinerds.net/addons/matrix/addons.xml</info>
-            <checksum>https://repo.kodinerds.net/addons/matrix/addons.xml.md5</checksum>
-            <datadir zip="true">https://repo.kodinerds.net/addons/matrix/zip/</datadir>
-            <hashes>false</hashes>
-        </dir>
-        <dir minversion="18.0.0" maxversion="18.9.0">
-            <info compressed="true">https://repo.kodinerds.net/addons/leia/addons.xml</info>
-            <checksum>https://repo.kodinerds.net/addons/leia/addons.xml.md5</checksum>
-            <datadir zip="true">https://repo.kodinerds.net/addons/leia/zip/</datadir>
-            <hashes>false</hashes>
-        </dir>
-        <dir minversion="17.0.0" maxversion="18.9.0">
-            <info compressed="true">https://repo.kodinerds.net/addons/krypton/addons.xml</info>
-            <checksum>https://repo.kodinerds.net/addons/krypton/addons.xml.md5</checksum>
-            <datadir zip="true">https://repo.kodinerds.net/addons/krypton/zip/</datadir>
-            <hashes>false</hashes>
-        </dir>
-        <dir minversion="16.0.0" maxversion="18.9.0">
-            <info compressed="true">https://repo.kodinerds.net/addons/jarvis/addons.xml</info>
-            <checksum>https://repo.kodinerds.net/addons/jarvis/addons.xml.md5</checksum>
-            <datadir zip="true">https://repo.kodinerds.net/addons/jarvis/zip/</datadir>
-            <hashes>false</hashes>
-        </dir>
-        <dir minversion="15.0.0" maxversion="18.9.0">
-            <info compressed="true">https://repo.kodinerds.net/addons/isengard/addons.xml</info>
-            <checksum>https://repo.kodinerds.net/addons/isengard/addons.xml.md5</checksum>
-            <datadir zip="true">https://repo.kodinerds.net/addons/isengard/zip/</datadir>
-            <hashes>false</hashes>
-        </dir>
-        <dir minversion="14.0.0" maxversion="18.9.0">
-            <info compressed="true">https://repo.kodinerds.net/addons/helix/addons.xml</info>
-            <checksum>https://repo.kodinerds.net/addons/helix/addons.xml.md5</checksum>
-            <datadir zip="true">https://repo.kodinerds.net/addons/helix/zip/</datadir>
-            <hashes>false</hashes>
-        </dir>
-        <dir minversion="13.0.0" maxversion="18.9.0">
-            <info compressed="true">https://repo.kodinerds.net/addons/gotham/addons.xml</info>
-            <checksum>https://repo.kodinerds.net/addons/gotham/addons.xml.md5</checksum>
-            <datadir zip="true">https://repo.kodinerds.net/addons/gotham/zip/</datadir>
-            <hashes>false</hashes>
-        </dir>
-    </extension>
-    <extension point="xbmc.addon.metadata">
-        <summary lang="en">Addon repository of the Kodinerds Community</summary>
-        <description lang="en">The 'Nerdsrepo' is the Repository of the german Kodi Community 'Kodinerds' (www.kodinerds.net). Most of the hosted Addons here are active developed and supported by the members of the Community. Nerdsrepo is an unofficial Repository of the Kodi Media Center Software</description>
-        <summary lang="de">Addon Repository der Kodinerds Community</summary>
-        <description lang="de">Das 'Nerdsrepo' ist das Addon Repository der deutschen Kodi-Community 'Kodinerds' (www.kodinerds.net). Die meisten der hier im Nerdsrepo gehosteten Addons werden von den Mitgliedern der Community aktiv entwickelt und unterstützt. Das Nerdsrepo ist ein unoffizielles Repository der Kodi Media Center Software.</description>
-        <disclaimer/>
-        <platform>all</platform>
-        <assets>
-            <icon>icon.png</icon>
-            <fanart>fanart.jpg</fanart>
-        </assets>
-    </extension>
-</addon>
+<!-- michaz Repository -->
+    <addon id="repository.michaz" name="Michaz Repository" provider-name="Michaz" version="5.0">
+        <extension point="xbmc.addon.repository" name="Michaz Repository">
+            <dir>
+                <info compressed="false">https://michaz1988.github.io/repo/addons.xml</info>
+                <checksum>https://michaz1988.github.io/repo/addons.xml.md5</checksum>
+                <datadir zip="true">https://michaz1988.github.io/repo/</datadir>
+            </dir>
+            <dir minversion="19.0.0" maxversion="19.9.0">
+                <info compressed="false">https://raw.github.com/kaffepausse71/SKINBASE19/master/addons.xml</info>
+                <checksum>https://raw.github.com/kaffepausse71/SKINBASE19/master/addons.xml.md5</checksum>
+                <datadir zip="true">https://raw.github.com/kaffepausse71/SKINBASE19/master/</datadir>
+            </dir>
+            <dir minversion="20.0.0" maxversion="20.9.0">
+                <info compressed="false">https://raw.github.com/kaffepausse71/SKINBASE.NEXUS/master/addons.xml</info>
+                <checksum>https://raw.github.com/kaffepausse71/SKINBASE.NEXUS/master/addons.xml.md5</checksum>
+                <datadir zip="true">https://raw.github.com/kaffepausse71/SKINBASE.NEXUS/master/</datadir>
+            </dir>
+            <dir minversion="21.0.0" maxversion="21.9.0">
+                <info compressed="false">https://raw.github.com/kaffepausse71/SKINBASE.OMEGA/master/addons.xml</info>
+                <checksum>https://raw.github.com/kaffepausse71/SKINBASE.OMEGA/master/addons.xml.md5</checksum>
+                <datadir zip="true">https://raw.github.com/kaffepausse71/SKINBASE.OMEGA/master/</datadir>
+            </dir>
+            <dir minversion="22.0.0" maxversion="22.9.0">
+                <info compressed="false">https://raw.github.com/kaffepausse71/SKINBASE.PEGASUS/master/addons.xml</info>
+                <checksum>https://raw.github.com/kaffepausse71/SKINBASE.PEGASUS/master/addons.xml.md5</checksum>
+                <datadir zip="true">https://raw.github.com/kaffepausse71/SKINBASE.PEGASUS/master/</datadir>
+            </dir>
+            <dir>
+                <info compressed="false">https://raw.githubusercontent.com/Gujal00/smrzips/master/addons.xml</info>
+                <checksum>https://raw.githubusercontent.com/Gujal00/smrzips/master/addons.xml.md5</checksum>
+                <datadir zip="true">https://raw.githubusercontent.com/Gujal00/smrzips/master/zips/</datadir>
+            </dir>
+        </extension>
+        <extension point="xbmc.addon.metadata">
+            <platform>all</platform>
+            <description lang="en">Addons by Michaz</description>
+            <website>https://michaz1988.github.io</website>
+            <assets>
+                <icon>icon.png</icon>
+            </assets>
+        </extension>
+    </addon>
 
-<addon id="repository.kodiwulf" name="KodiWulf Repository" version="0.0.1" provider-name="NeoWulf">
-    <requires>
-        <import addon="xbmc.addon" version="12.0.0" />
-    </requires>
-    <extension point="xbmc.addon.repository" name="KodiWulf Repository">
-        <info compressed="false">https://n-e-o-w-u-l-f.github.io/kodiwulf-repo/addons.xml</info>
-        <checksum>https://n-e-o-w-u-l-f.github.io/kodiwulf-repo/addons.xml.md5</checksum>
-        <datadir zip="true">https://n-e-o-w-u-l-f.github.io/kodiwulf-repo/</datadir>
-    </extension>
-    <extension point="xbmc.addon.metadata">
-        <summary lang="de_DE">KodiWulf Add-on Repository</summary>
-        <summary lang="en_GB">KodiWulf Add-on Repository</summary>
-        <description lang="de_DE">Repository-Add-on für KodiWulf-Pakete, Add-ons und spätere Builds.</description>
-        <description lang="en_GB">Repository add-on for KodiWulf packages, add-ons, and future builds.</description>
-        <disclaimer lang="de_DE">Nur Add-ons installieren, denen du vertraust. Dieses Repository ist als Grundstruktur vorbereitet.</disclaimer>
-        <disclaimer lang="en_GB">Only install add-ons you trust. This repository is prepared as a starter structure.</disclaimer>
-        <platform>all</platform>
-        <license>MIT</license>
-        <website>https://github.com/n-e-o-w-u-l-f/kodiwulf-repo</website>
-        <source>https://github.com/n-e-o-w-u-l-f/kodiwulf-repo</source>
-        <assets>
-            <icon>icon.png</icon>
-            <fanart>fanart.jpg</fanart>
-        </assets>
-    </extension>
-</addon>
+<!--    VAVOO.TO    -->
+    <addon id="plugin.video.vavooto" name="VAVOO.TO" version="2026.05.03" provider-name="kasi,michaz">
+        <requires>
+            <import addon="xbmc.python" version="3.0.1"/>
+            <import addon="script.module.requests"/>
+            <import addon="script.module.resolveurl"/>
+            <import addon="script.module.dateutil"/>
+            <import addon="inputstream.adaptive"/>
+            <import addon="inputstream.ffmpegdirect"/>
+            <import addon="script.module.infotagger"/>
+        </requires>
+        <extension point="xbmc.python.pluginsource" library="resources/main.py">
+            <provides>video</provides>
+        </extension>
+        <extension point="xbmc.python.module" library="resources"/>
+        <extension point="xbmc.addon.metadata">
+            <summary lang="de_DE">VAVOO.TO Video Add-on</summary>
+            <description lang="de_DE">Video-Add-on für Live-TV, Filme und Serien mit VAVOO- und Stalker-Quellen.</description>
+            <platform>all</platform>
+            <assets>
+                <icon>icon.png</icon>
+            </assets>
+        </extension>
+    </addon>
 
-<addon id="repository.michaz" name="Michaz Repository" provider-name="Michaz" version="5.0">
-	<extension point="xbmc.addon.repository" name="Michaz Repository">
-		<dir>
-			<info compressed="false">https://michaz1988.github.io/repo/addons.xml</info>
-			<checksum>https://michaz1988.github.io/repo/addons.xml.md5</checksum>
-			<datadir zip="true">https://michaz1988.github.io/repo/</datadir>
-		</dir>
-			<dir minversion="19.0.0" maxversion="19.9.0">
-			<info compressed="false">https://raw.github.com/kaffepausse71/SKINBASE19/master/addons.xml</info>
-			<checksum>https://raw.github.com/kaffepausse71/SKINBASE19/master/addons.xml.md5</checksum>
-			<datadir zip="true">https://raw.github.com/kaffepausse71/SKINBASE19/master/</datadir>
-		</dir>
-		<dir minversion="20.0.0" maxversion="20.9.0">
-			<info compressed="false">https://raw.github.com/kaffepausse71/SKINBASE.NEXUS/master/addons.xml</info>
-			<checksum>https://raw.github.com/kaffepausse71/SKINBASE.NEXUS/master/addons.xml.md5</checksum>
-			<datadir zip="true">https://raw.github.com/kaffepausse71/SKINBASE.NEXUS/master/</datadir>
-		</dir>
-		<dir minversion="21.0.0" maxversion="21.9.0">
-			<info compressed="false">https://raw.github.com/kaffepausse71/SKINBASE.OMEGA/master/addons.xml</info>
-			<checksum>https://raw.github.com/kaffepausse71/SKINBASE.OMEGA/master/addons.xml.md5</checksum>
-			<datadir zip="true">https://raw.github.com/kaffepausse71/SKINBASE.OMEGA/master/</datadir>
-		</dir>
-		<dir minversion="22.0.0" maxversion="22.9.0">
-			<info compressed="false">https://raw.github.com/kaffepausse71/SKINBASE.PEGASUS/master/addons.xml</info>
-			<checksum>https://raw.github.com/kaffepausse71/SKINBASE.PEGASUS/master/addons.xml.md5</checksum>
-			<datadir zip="true">https://raw.github.com/kaffepausse71/SKINBASE.PEGASUS/master/</datadir>
-		</dir>
-		<dir>
-			<info compressed="false">https://raw.githubusercontent.com/Gujal00/smrzips/master/addons.xml</info>
-			<checksum>https://raw.githubusercontent.com/Gujal00/smrzips/master/addons.xml.md5</checksum>
-			<datadir zip="true">https://raw.githubusercontent.com/Gujal00/smrzips/master/zips/</datadir>
-		</dir>
-	</extension>
-	<extension point="xbmc.addon.metadata">
-		<platform>all</platform>
-		<description lang="en">Addons by Michaz</description>
-		<website>https://michaz1988.github.io</website>
-		<assets>
-			<icon>icon.png</icon>
-		</assets> 
-	</extension>
-</addon>
+<!--    xWULF    -->
+    <addon id="plugin.video.xwulf" version="0.0.2" name="[B][COLOR red]x[/COLOR]Wulf[/B]" provider-name="Neowulf">
+        <requires>
+            <import addon="plugin.video.themoviedb.helper"/>
+            <import addon="xbmc.python" version="3.0.0"/>
+            <import addon="script.module.requests"/>
+            <import addon="script.module.download-m3u8" optional="true"/>
+            <import addon="script.module.six"/>
+            <import addon="script.module.kodi-six"/>
+            <import addon="script.module.pyaes"/>
+            <import addon="script.module.pyaes"/>
+            <import addon="script.module.infotagger"/>
+            <import addon="script.module.resolveurl" version="5.1.100"/>
+            <import addon="script.module.pydevd" optional="true"/>
+        </requires>
+        <extension point="xbmc.python.pluginsource" library="default.py">
+            <provides>video</provides>
+        </extension>
+        <extension point="xbmc.service" library="service.py" start="startup"/>
+        <extension point="xbmc.addon.metadata">
+            <summary lang="de_DE">xWulf: Der xShip Fix</summary>
+            <summary lang="en_GB">xWulf: The xShip Fix</summary>
+            <platform>all</platform>
+            <assets>
+                <icon>resources/icon.png</icon>
+                <fanart>resources/fanart.jpg</fanart>
+                <banner>resources/media/banner.png</banner>
+            </assets>
+        </extension>
+    </addon>
 </addons>
