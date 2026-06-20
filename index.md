@@ -9,13 +9,13 @@ GitHub Pages:
 - [index.html](index.html)
 - [addons.xml](addons.xml)
 - [addons.xml.md5](addons.xml.md5)
-- [Repository/repository.kodiwulf-0.1.0.zip](Repository/repository.kodiwulf-0.1.0.zip)
+- [plugin/repository/repository.kodiwulf-0.1.0.zip](plugin/repository/repository.kodiwulf-0.1.0.zip)
 
 ## Browser ZIP folders
 
-- [Program/](Program/)
-- [Repository/](Repository/)
-- [Videos/](Videos/)
+- [plugin/program/](plugin/program/)
+- [plugin/repository/](plugin/repository/)
+- [plugin/video/](plugin/video/)
 
 ## Canonical Kodi folders
 

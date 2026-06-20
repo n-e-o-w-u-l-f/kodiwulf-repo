@@ -673,5 +673,25 @@ def main() -> int:
     return 0
 
 
+
+def force_public_plugin_links(html_text: str) -> str:
+    """Ersetzt lokale ZIPs/-Quellpfade durch öffentliche plugin/*-Links."""
+    replacements = {
+        "ZIPs/VIDEO/": "plugin/video/",
+        "ZIPs/PROGRAMM/": "plugin/program/",
+        "ZIPs/REPOSITORY/": "plugin/repository/",
+        "ZIPs/VIDEO": "plugin/video",
+        "ZIPs/PROGRAMM": "plugin/program",
+        "ZIPs/REPOSITORY": "plugin/repository",
+        'href="ZIPs/"': 'href="plugin/"',
+        ">ZIPs/<": ">plugin/<",
+        "aus ZIPs/ rekursiv gelesen": "aus plugin/* gespiegelt",
+        "ZIP Root": "Plugin Root",
+    }
+    for old, new in replacements.items():
+        html_text = html_text.replace(old, new)
+    return html_text
+
+
 if __name__ == "__main__":
     raise SystemExit(main())

@@ -37,4 +37,4 @@ Expected repository metadata:
     curl -L -I "https://n-e-o-w-u-l-f.github.io/kodiwulf-repo/"
     curl -L -I "https://n-e-o-w-u-l-f.github.io/kodiwulf-repo/addons.xml"
     curl -L -I "https://n-e-o-w-u-l-f.github.io/kodiwulf-repo/addons.xml.md5"
-    curl -L -I "https://n-e-o-w-u-l-f.github.io/kodiwulf-repo/Repository/repository.kodiwulf-0.1.0.zip"
+    curl -L -I "https://n-e-o-w-u-l-f.github.io/kodiwulf-repo/plugin/repository/repository.kodiwulf-0.1.0.zip"

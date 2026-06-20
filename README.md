@@ -14,7 +14,7 @@ KodiWulf is a static Kodi 21 Omega repository served through GitHub Pages.
 
 Use this ZIP in Kodi:
 
-    https://n-e-o-w-u-l-f.github.io/kodiwulf-repo/Repository/repository.kodiwulf-0.1.0.zip
+    https://n-e-o-w-u-l-f.github.io/kodiwulf-repo/plugin/repository/repository.kodiwulf-0.1.0.zip
 
 After installation, Kodi reads:
 
@@ -29,9 +29,9 @@ After installation, Kodi reads:
 
 ## Public folders
 
-    Program/       Browser-friendly program add-on ZIPs
-    Repository/    Browser-friendly repository ZIPs
-    Videos/        Browser-friendly video add-on ZIPs
+    plugin/program/ Browser-friendly program add-on ZIPs
+    plugin/repository/ Browser-friendly repository ZIPs
+    plugin/video/ Browser-friendly video add-on ZIPs
     <addon.id>/    Canonical Kodi repository folders
     addons.xml     Kodi repository metadata
     addons.xml.md5 Kodi repository checksum
