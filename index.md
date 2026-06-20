@@ -2,30 +2,38 @@
 
 GitHub Pages:
 
-- https://n-e-o-w-u-l-f.github.io/kodiwulf-repo/
-- https://n-e-o-w-u-l-f.github.io/kodiwulf-repo/addons.xml
-- https://n-e-o-w-u-l-f.github.io/kodiwulf-repo/addons.xml.md5
+    https://n-e-o-w-u-l-f.github.io/kodiwulf-repo/
 
-## Root index
+## Main files
 
-- [DIR] [plugin.video.vavooto/](plugin.video.vavooto/)
-- [DIR] [plugin.video.xwulf/](plugin.video.xwulf/)
-- [DIR] [repository.kodinerds/](repository.kodinerds/)
-- [DIR] [repository.kodiwulf/](repository.kodiwulf/)
-- [DIR] [repository.michaz/](repository.michaz/)
-- [FILE] [addons.xml](addons.xml)
-- [FILE] [addons.xml.md5](addons.xml.md5)
-- [FILE] [bg.png](bg.png)
-- [FILE] [README.md](README.md)
-- [FILE] [CHANGES.md](CHANGES.md)
-- [FILE] [UPDATE_PROCESS.md](UPDATE_PROCESS.md)
-- [FILE] [.nojekyll](.nojekyll)
-- [FILE] [index.html](index.html)
+- [index.html](index.html)
+- [addons.xml](addons.xml)
+- [addons.xml.md5](addons.xml.md5)
+- [Repository/repository.kodiwulf-0.1.0.zip](Repository/repository.kodiwulf-0.1.0.zip)
 
-## Add-ons
+## Browser ZIP folders
 
-- [plugin.video.vavooto](plugin.video.vavooto/) - kasi,michaz 2026.05.03
-- [plugin.video.xwulf](plugin.video.xwulf/) - Neowulf 0.0.1
-- [repository.kodinerds](repository.kodinerds/) - Kodinerds 7.0.1.7
-- [repository.kodiwulf](repository.kodiwulf/) - NeoWulf 0.0.1
-- [repository.michaz](repository.michaz/) - Michaz 5.0
+- [Program/](Program/)
+- [Repository/](Repository/)
+- [Videos/](Videos/)
+
+## Canonical Kodi folders
+
+- [plugin.program.theredwizard/](plugin.program.theredwizard/)
+- [plugin.video.vavooto/](plugin.video.vavooto/)
+- [plugin.video.xwulf/](plugin.video.xwulf/)
+- [plugin.video.youtube/](plugin.video.youtube/)
+- [repository.Magnetic/](repository.Magnetic/)
+- [repository.Rising.Tides/](repository.Rising.Tides/)
+- [repository.ad0lar/](repository.ad0lar/)
+- [repository.bg/](repository.bg/)
+- [repository.bugatsinho/](repository.bugatsinho/)
+- [repository.jewrepo/](repository.jewrepo/)
+- [repository.kodinerds/](repository.kodinerds/)
+- [repository.kodiwulf/](repository.kodiwulf/)
+- [repository.loop/](repository.loop/)
+- [repository.redwizard/](repository.redwizard/)
+- [repository.sandmann79-py3.plugins/](repository.sandmann79-py3.plugins/)
+- [repository.thecrew/](repository.thecrew/)
+- [repository.thelab/](repository.thelab/)
+- [repository.vstream/](repository.vstream/)

@@ -662,7 +662,7 @@ def build(args: argparse.Namespace) -> None:
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--root", default="~/Projekte/kodiwulf-repo")
-    parser.add_argument("--base-url", default="http://127.0.0.1:8080")
+    parser.add_argument("--base-url", default="https://n-e-o-w-u-l-f.github.io/kodiwulf-repo/")
     parser.add_argument("--repo-id", default="repository.kodiwulf")
     parser.add_argument("--repo-name", default="Kodiwulf")
     parser.add_argument("--repo-version", default="0.1.0")

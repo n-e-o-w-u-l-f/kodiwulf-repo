@@ -1,76 +1,57 @@
-<p align="center">
-  <img src="./bg.png" alt="KodiWulf Repository Banner" width="100%">
-</p>
+![KodiWulf Repository Banner](bg.png)
 
-# # # # # # # # # # # # # #
-# KodiWulf Repository #
-# # # # # # # # # # # # # #
+# # # # # # # # # # # # #
+# KodiWulf Repository
+# # # # # # # # # # # # #
 
-KodiWulf repository skeleton for Kodi add-ons, modeled after a classic web-served Kodi repository layout.
+KodiWulf is a static Kodi 21 Omega repository served through GitHub Pages.
 
-## Correct GitHub Pages URL
+## Public URL
 
-This is a project page, so the public URL is:
+    https://n-e-o-w-u-l-f.github.io/kodiwulf-repo/
 
-```text
-https://n-e-o-w-u-l-f.github.io/kodiwulf-repo/
-```
+## Install from ZIP
 
-Not:
+Use this ZIP in Kodi:
 
-```text
-https://kodiwulf-repo.github.io/
-```
+    https://n-e-o-w-u-l-f.github.io/kodiwulf-repo/Repository/repository.kodiwulf-0.1.0.zip
 
-## Kodi repository URLs
+After installation, Kodi reads:
 
-```text
-https://n-e-o-w-u-l-f.github.io/kodiwulf-repo/addons.xml
-https://n-e-o-w-u-l-f.github.io/kodiwulf-repo/addons.xml.md5
-https://n-e-o-w-u-l-f.github.io/kodiwulf-repo/repository.kodiwulf/repository.kodiwulf-0.0.1.zip
-```
+    https://n-e-o-w-u-l-f.github.io/kodiwulf-repo/addons.xml
+    https://n-e-o-w-u-l-f.github.io/kodiwulf-repo/addons.xml.md5
 
-## Expected add-ons
+## Current repository state
 
-```text
-plugin.video.vavooto/
-plugin.video.xwulf/
-repository.kodinerds/
-repository.michaz/
-repository.kodiwulf/
-```
+    repository.kodiwulf 0.1.0
+    Kodi target: Kodi 21 Omega
+    Add-ons in addons.xml: 18
 
-Kodi expects package ZIP files in this pattern:
+## Public folders
 
-```text
-addon.id/addon.id-version.zip
-```
+    Program/       Browser-friendly program add-on ZIPs
+    Repository/    Browser-friendly repository ZIPs
+    Videos/        Browser-friendly video add-on ZIPs
+    <addon.id>/    Canonical Kodi repository folders
+    addons.xml     Kodi repository metadata
+    addons.xml.md5 Kodi repository checksum
+    index.html     GitHub Pages landing page
 
-Example:
+## Local source ZIP layout
 
-```text
-plugin.video.xwulf/plugin.video.xwulf-10.06.2026.zip
-repository.michaz/repository.michaz-5.0.zip
-```
+Source ZIPs are local build inputs and are ignored by Git:
 
-## Local ZIP import
+    ZIPs/VIDEO/
+    ZIPs/PROGRAMM/
+    ZIPs/REPOSITORY/
 
-Put your ZIP files either in the repository root, in `zips/`, or directly inside their add-on folder.
+## Rebuild
 
-Then run:
+    python3 tools/kodiwulf_build_repo.py --base-url "https://n-e-o-w-u-l-f.github.io/kodiwulf-repo/" --apply
 
-```bash
-python3 tools/build_repo.py
-```
+The active generator also runs:
 
-The builder will inspect ZIP files, extract `addon.xml`, place each ZIP into the correct `addon.id/` folder, rebuild `addons.xml` and generate static `index.html` pages for GitHub Pages.
+    tools/kodiwulf_addons_xml.py
+    tools/kodiwulf_dark_index.py
 
-## GitHub Pages
-
-Enable:
-
-```text
-Settings → Pages → Deploy from a branch → main → / root
-```
-
-The root `index.html` exists so the website is visible in a browser. The `.nojekyll` file disables Jekyll processing for this static repository layout.
+Only install Kodi add-ons and repositories you trust.

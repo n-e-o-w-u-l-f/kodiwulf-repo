@@ -1,42 +1,40 @@
-# # # # # # # # # # # # # # # # # #
-# KODIWULF UPDATE PROCESS #
-# # # # # # # # # # # # # # # # # #
+# # # # # # # # # # # # # # #
+# KodiWulf Update Process
+# # # # # # # # # # # # # # #
 
-## 1. Richtigen lokalen Repository-Pfad verwenden
+## 1. Place source ZIPs locally
 
-```text
-/home/deck/Projekte/n-e-o-w-u-l-f/kodiwulf-repo/
-```
+Source ZIPs are local build inputs and should not be committed.
 
-## 2. Add-on-ZIP-Dateien lokal ablegen
+    ZIPs/VIDEO/
+    ZIPs/PROGRAMM/
+    ZIPs/REPOSITORY/
 
-```text
-kodiwulf-repo/
-kodiwulf-repo/zips/
-kodiwulf-repo/plugin.video.xwulf/
-kodiwulf-repo/plugin.video.vavooto/
-kodiwulf-repo/repository.kodinerds/
-kodiwulf-repo/repository.michaz/
-```
+## 2. Rebuild
 
-## 3. Repository lokal bauen
+    python3 tools/kodiwulf_build_repo.py --base-url "https://n-e-o-w-u-l-f.github.io/kodiwulf-repo/" --apply
 
-```bash
-python3 tools/build_repo.py
-```
+## 3. Validate
 
-## 4. Sicher committen und pushen
+Run:
 
-Für interaktive Terminals keine Rohblöcke mit `exit 1` oder `set -e` verwenden. Nutze eine Kind-Shell und Statusvariablen.
+    python3 -m py_compile tools/kodiwulf_build_repo.py tools/kodiwulf_addons_xml.py tools/kodiwulf_dark_index.py
 
-## 5. GitHub Pages aktivieren
+Expected repository metadata:
 
-```text
-Settings → Pages → Deploy from a branch → main → / root
-```
+    Add-ons: 18
+    repository.kodiwulf 0.1.0: present
+    addons.xml.md5: matches addons.xml
 
-Projekt-URL:
+## 4. Commit and push
 
-```text
-https://n-e-o-w-u-l-f.github.io/kodiwulf-repo/
-```
+    git add -A -- .
+    git commit -m "fix(repo): update KodiWulf docs"
+    git push origin main
+
+## 5. Online checks
+
+    curl -L -I "https://n-e-o-w-u-l-f.github.io/kodiwulf-repo/"
+    curl -L -I "https://n-e-o-w-u-l-f.github.io/kodiwulf-repo/addons.xml"
+    curl -L -I "https://n-e-o-w-u-l-f.github.io/kodiwulf-repo/addons.xml.md5"
+    curl -L -I "https://n-e-o-w-u-l-f.github.io/kodiwulf-repo/Repository/repository.kodiwulf-0.1.0.zip"
