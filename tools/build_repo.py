@@ -245,6 +245,18 @@ def build_index(addons: list[dict[str, str | Path]], zip_paths: list[Path]) -> P
     index_path = REPO_ROOT / "index.html"
     write_text(index_path, index)
     log("[OK] index.html erzeugt, ohne Plugin-Ordnerlinks")
+    try:
+        from kodiwulf_addons_xml import write_addons_xml_from_zips
+        _, _, addon_count = write_addons_xml_from_zips(REPO_ROOT)
+        log(f"[OK] addons.xml aus ZIPs erzeugt: {addon_count} Add-ons")
+    except Exception as exc:
+        log(f"[WARN] addons.xml konnte nicht aus ZIPs erzeugt werden: {exc}")
+    try:
+        from kodiwulf_dark_index import write_dark_index
+        write_dark_index(REPO_ROOT)
+        log("[OK] dunkle KodiWulf index.html erzeugt")
+    except Exception as exc:
+        log(f"[WARN] dunkle KodiWulf index.html konnte nicht erzeugt werden: {exc}")
     return index_path
 
 

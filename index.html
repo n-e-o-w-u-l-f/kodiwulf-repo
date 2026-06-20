@@ -1,130 +1,392 @@
 <!doctype html>
 <html lang="de">
 <head>
-  <meta charset="utf-8">
-  <title>KodiWulf Repository</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KodiWulf Repository</title>
+<meta name="description" content="Dunkler KodiWulf Repository Index für Kodi 21 Omega">
+<style>
+:root {
+  --bg: #050506;
+  --panel: rgba(9, 9, 13, 0.88);
+  --panel2: rgba(14, 14, 21, 0.95);
+  --line: rgba(255,255,255,0.14);
+  --text: #f4f4f8;
+  --muted: #aaaab8;
+  --red: #ff3030;
+  --cyan: #8be9fd;
+  --green: #98ffbb;
+  --yellow: #ffcc66;
+  --shadow: rgba(0,0,0,0.72);
+}
+
+* { box-sizing: border-box; }
+html { min-height: 100%; background: var(--bg); }
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  color: var(--text);
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  line-height: 1.55;
+  background:
+    radial-gradient(circle at 20% 10%, rgba(255,48,48,0.20), transparent 34%),
+    radial-gradient(circle at 85% 25%, rgba(139,233,253,0.13), transparent 30%),
+    linear-gradient(90deg, rgba(5,5,6,0.98), rgba(5,5,6,0.76), rgba(5,5,6,0.98)),
+    linear-gradient(180deg, rgba(0,0,0,0.84), rgba(0,0,0,0.95)),
+    url("bg.png");
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed;
+}
+
+a { color: var(--cyan); text-decoration: none; font-weight: 700; }
+a:hover { color: #fff; text-decoration: underline; }
+
+main {
+  width: min(1180px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 34px 0 58px;
+}
+
+.hero {
+  border: 1px solid var(--line);
+  border-radius: 28px;
+  padding: clamp(28px, 5vw, 58px);
+  background:
+    linear-gradient(135deg, rgba(255,48,48,0.16), transparent 42%),
+    linear-gradient(315deg, rgba(139,233,253,0.10), transparent 42%),
+    var(--panel);
+  box-shadow: 0 30px 90px var(--shadow);
+  backdrop-filter: blur(10px);
+  margin-bottom: 18px;
+}
+
+.eyebrow {
+  margin: 0 0 12px;
+  color: var(--red);
+  text-transform: uppercase;
+  letter-spacing: .18em;
+  font-size: .78rem;
+  font-weight: 900;
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(2.2rem, 7vw, 5rem);
+  line-height: .95;
+  letter-spacing: -.065em;
+}
+
+.x { color: var(--red); text-shadow: 0 0 24px rgba(255,48,48,.72); }
+.subtitle { max-width: 900px; margin: 18px 0 0; color: var(--muted); font-size: 1.04rem; }
+
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 22px;
+}
+
+.nav a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 38px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 7px 13px;
+  color: var(--text);
+  background: rgba(255,255,255,.045);
+}
+
+.nav a:hover {
+  border-color: rgba(139,233,253,.45);
+  background: rgba(139,233,253,.10);
+  text-decoration: none;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+  margin: 18px 0;
+}
+
+.card,
+.panel {
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: var(--panel2);
+  box-shadow: 0 18px 55px var(--shadow);
+  backdrop-filter: blur(10px);
+}
+
+.card { padding: 18px; }
+.card h2 { margin: 0 0 10px; font-size: 1.05rem; }
+.card p { margin: 0; color: var(--muted); }
+.card strong { display: block; color: var(--green); font-size: 2rem; line-height: 1; }
+
+.panel { overflow: hidden; margin-top: 18px; }
+
+.panel-head {
+  padding: 18px 20px;
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: center;
+}
+
+.panel-head h2 { margin: 0; font-size: 1.15rem; }
+
+.pill {
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 6px 11px;
+  color: var(--muted);
+  background: rgba(255,255,255,.04);
+  font-size: .82rem;
+  white-space: nowrap;
+}
+
+.table-wrap { width: 100%; overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; }
+
+th,
+td {
+  padding: 12px 16px;
+  border-bottom: 1px solid rgba(255,255,255,.09);
+  text-align: left;
+  vertical-align: middle;
+}
+
+th {
+  color: #fff;
+  font-size: .78rem;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  background: rgba(255,255,255,.045);
+}
+
+td { color: var(--muted); }
+tr:hover td { background: rgba(255,255,255,.04); color: var(--text); }
+
+.type {
+  width: 78px;
+  text-align: center;
+  color: var(--yellow);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  white-space: nowrap;
+}
+
+.warn { color: var(--yellow); font-weight: 800; }
+.bad { color: #ff9090; }
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  padding: 4px 9px;
+  font-size: .74rem;
+  font-weight: 900;
+  letter-spacing: .07em;
+}
+
+.badge.ok { color: #04120a; background: var(--green); }
+.badge.warn { color: #1c1300; background: var(--yellow); }
+.badge.bad { color: #210000; background: #ff6b6b; }
+
+.urls {
+  padding: 16px 20px 20px;
+  color: var(--muted);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+small { color: var(--muted); }
+
+footer {
+  margin-top: 22px;
+  color: var(--muted);
+  font-size: .88rem;
+  text-align: center;
+}
+
+@media (max-width: 920px) {
+  .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  th:nth-child(4), td:nth-child(4) { display: none; }
+}
+
+@media (max-width: 640px) {
+  main { width: min(100% - 20px, 1180px); padding-top: 14px; }
+  .grid { grid-template-columns: 1fr; }
+  .panel-head { align-items: flex-start; flex-direction: column; }
+}
+</style>
 </head>
 <body>
-  <h1>KodiWulf Repository</h1>
-
-  <p>
-    Für Kodi: <strong>Install from ZIP</strong> soll die Repository-ZIP installieren.
-    Danach verwendet Kodi <code>addons.xml</code> und <code>addons.xml.md5</code>.
-  </p>
-
-<!-- DRDEBUG-KODIWULF-INDEX:BEGIN -->
-  <section id="kodiwulf-repository-browser" data-drdebug-managed="kodiwulf-repo-index">
-    <h2>Kodi Installationsstruktur</h2>
-    <p>
-      Diese Links sind so aufgebaut, dass Kodi über <strong>Install from ZIP</strong>
-      die Ordner <code>Repository/</code> und <code>Videos/</code> sieht.
-      Die installierte Repository-ZIP verwendet zusätzlich <code>addons.xml</code>,
-      <code>addons.xml.md5</code> und die kanonischen Add-on-Ordner.
+<main>
+  <header class="hero">
+    <p class="eyebrow">GitHub Pages Kodi Repository</p>
+    <h1><span class="x">x</span>Wulf Repository</h1>
+    <p class="subtitle">
+      Dunkler statischer Repository-Index nach Directory-Listing-Vorbild.
+      Diese Seite verlinkt die aktuelle ZIP-Struktur aus <strong>ZIPs/REPOSITORY</strong>,
+      <strong>ZIPs/VIDEO</strong> und <strong>ZIPs/PROGRAMM</strong>.
     </p>
+    <nav class="nav" aria-label="Repository Navigation">
+      <a href="#repository">Repository-ZIPs</a>
+      <a href="#video">Video-Add-ons</a>
+      <a href="#programm">Programm-Add-ons</a>
+      <a href="addons.xml">addons.xml</a>
+      <a href="addons.xml.md5">addons.xml.md5</a>
+      <a href="repository.kodiwulf/">Repository Add-on</a>
+    </nav>
+  </header>
 
-    <table border="1" cellpadding="6" cellspacing="0">
-      <thead>
-        <tr>
-          <th>Pfad</th>
-          <th>Zweck</th>
-        </tr>
-      </thead>
-      <tbody>
-      <tr><td><a href="Repository/">Repository/</a></td><td>Repository-ZIPs für Kodi „Install from ZIP“</td></tr>
-      <tr><td><a href="Videos/">Videos/</a></td><td>Video-Add-ons für Kodi „Install from ZIP“</td></tr>
-      <tr><td><a href="addons.xml">addons.xml</a></td><td>Kodi Repository-Metadaten</td></tr>
-      <tr><td><a href="addons.xml.md5">addons.xml.md5</a></td><td>Checksumme für Kodi</td></tr>
-      </tbody>
-    </table>
-
-    <h2>Repository ZIPs</h2>
-    <table border="1" cellpadding="6" cellspacing="0">
-      <thead>
-        <tr>
-          <th>Add-on-ID</th>
-          <th>Name</th>
-          <th>Version</th>
-          <th>Provider</th>
-          <th>Kategorie</th>
-          <th>Download</th>
-        </tr>
-      </thead>
-      <tbody>
-      <tr><td>repository.Magnetic</td><td>Magnetic Repo</td><td>1.1.0b</td><td>1-cool-guy</td><td>Repository</td><td><a href="Repository/repository.Magnetic-1.1.0b.zip">repository.Magnetic-1.1.0b.zip</a></td></tr>
-      <tr><td>repository.Rising.Tides</td><td>[COLOR red][B]R[/B][/COLOR][COLOR white][B]ising[/B][/COLOR] [COLOR pink][B]T[/B][/COLOR][COLOR white][B]ides[/B][/COLOR] Repository</td><td>1.1</td><td>[COLOR turquoise][B]@mullafabz[/B][/COLOR]</td><td>Repository</td><td><a href="Repository/repository.Rising.Tides-1.1.zip">repository.Rising.Tides-1.1.zip</a></td></tr>
-      <tr><td>repository.ad0lar</td><td>DEvmIb Repository</td><td>1.0</td><td>Ad0lar, fds97AVVS, DEvmIb</td><td>Repository</td><td><a href="Repository/repository.ad0lar-1.0.zip">repository.ad0lar-1.0.zip</a></td></tr>
-      <tr><td>repository.bg</td><td>BG-Repository</td><td>0.3.0</td><td>blauesgruen</td><td>Repository</td><td><a href="Repository/repository.bg-0.3.0.zip">repository.bg-0.3.0.zip</a></td></tr>
-      <tr><td>repository.bugatsinho</td><td>Bugatsinho repository</td><td>2.8</td><td>Bugatsinho</td><td>Repository</td><td><a href="Repository/repository.bugatsinho-2.8.zip">repository.bugatsinho-2.8.zip</a></td></tr>
-      <tr><td>repository.jewrepo</td><td>[COLOR purple]JewRepo[/COLOR]</td><td>1.6.0</td><td>JewBMX</td><td>Repository</td><td><a href="Repository/repository.jewrepo-1.6.0.zip">repository.jewrepo-1.6.0.zip</a></td></tr>
-      <tr><td>repository.kodinerds</td><td>Kodinerds Addon Repo</td><td>7.0.1.7</td><td>Kodinerds</td><td>Repository</td><td><a href="Repository/repository.kodinerds-7.0.1.7.zip">repository.kodinerds-7.0.1.7.zip</a></td></tr>
-      <tr><td>repository.kodiwulf</td><td>Kodiwulf</td><td>0.1.0</td><td>Kodiwulf</td><td>Repository</td><td><a href="Repository/repository.kodiwulf-0.1.0.zip">repository.kodiwulf-0.1.0.zip</a></td></tr>
-      <tr><td>repository.loop</td><td>[COLORlime]Loop[/COLOR] Repository</td><td>3.0.4</td><td>The Loop</td><td>Repository</td><td><a href="Repository/repository.loop-3.0.4.zip">repository.loop-3.0.4.zip</a></td></tr>
-      <tr><td>repository.redwizard</td><td>[COLOR red]The Red Repo[/COLOR]</td><td>1.2.2</td><td>[COLOR red]The Red Wizard[/COLOR]</td><td>Repository</td><td><a href="Repository/repository.redwizard-1.2.2.zip">repository.redwizard-1.2.2.zip</a></td></tr>
-      <tr><td>repository.sandmann79-py3.plugins</td><td>Sandmann79s Repository</td><td>1.0.4</td><td>Sandmann79</td><td>Repository</td><td><a href="Repository/repository.sandmann79-py3.plugins-1.0.4.zip">repository.sandmann79-py3.plugins-1.0.4.zip</a></td></tr>
-      <tr><td>repository.thecrew</td><td>[COLOR orchid]THE CREW REPO[/COLOR]</td><td>0.3.8</td><td>The Crew</td><td>Repository</td><td><a href="Repository/repository.thecrew-0.3.8.zip">repository.thecrew-0.3.8.zip</a></td></tr>
-      <tr><td>repository.thelab</td><td>TheLab Repository</td><td>25.3.27</td><td>[COLORpurple]• [COLORorchid]Tech [COLORdarkorchid]E [COLORplum]Coyote [COLORpurple]•[/COLOR]</td><td>Repository</td><td><a href="Repository/repository.thelab-25.3.27.zip">repository.thelab-25.3.27.zip</a></td></tr>
-      <tr><td>repository.vstream</td><td>vStream Repository</td><td>0.0.6</td><td>Venom</td><td>Repository</td><td><a href="Repository/repository.vstream-0.0.6.zip">repository.vstream-0.0.6.zip</a></td></tr>
-      </tbody>
-    </table>
-
-    <h2>Video Add-ons</h2>
-    <table border="1" cellpadding="6" cellspacing="0">
-      <thead>
-        <tr>
-          <th>Add-on-ID</th>
-          <th>Name</th>
-          <th>Version</th>
-          <th>Provider</th>
-          <th>Kategorie</th>
-          <th>Download</th>
-        </tr>
-      </thead>
-      <tbody>
-      <tr><td>plugin.video.vavooto</td><td>VAVOO.TO</td><td>2026.05.03</td><td>kasi,michaz</td><td>Videos</td><td><a href="Videos/plugin.video.vavooto-2026.05.03.zip">plugin.video.vavooto-2026.05.03.zip</a></td></tr>
-      <tr><td>plugin.video.xwulf</td><td>[B]xWulf[/B]</td><td>0.0.2</td><td>Michaz</td><td>Videos</td><td><a href="Videos/plugin.video.xwulf-0.0.2.zip">plugin.video.xwulf-0.0.2.zip</a></td></tr>
-      <tr><td>plugin.video.youtube</td><td>YouTube</td><td>7.0.2~alpha4umb</td><td>anxdpanic, bromix</td><td>Videos</td><td><a href="Videos/plugin.video.youtube-7.0.2~alpha4umb.zip">plugin.video.youtube-7.0.2~alpha4umb.zip</a></td></tr>
-      </tbody>
-    </table>
-
-    <h2>Kodi Repository-Pfade</h2>
-    <p>
-      Diese kanonischen Pfade werden von Kodi über das installierte Repository
-      und <code>datadir zip="true"</code> verwendet.
-    </p>
-    <table border="1" cellpadding="6" cellspacing="0">
-      <thead>
-        <tr>
-          <th>Add-on-ID</th>
-          <th>Name</th>
-          <th>Version</th>
-          <th>Provider</th>
-          <th>Kategorie</th>
-          <th>Download</th>
-        </tr>
-      </thead>
-      <tbody>
-      <tr><td>plugin.program.theredwizard</td><td>[COLOR red]The Red Wizard[/COLOR]</td><td>4.3.0</td><td>Slam, Sarge, Funsterbe, BYB, Zaxxon709, [COLOR red]The Red Wizard[/COLOR]</td><td>Program</td><td><a href="plugin.program.theredwizard/plugin.program.theredwizard-4.3.0.zip">plugin.program.theredwizard-4.3.0.zip</a></td></tr>
-      <tr><td>plugin.video.vavooto</td><td>VAVOO.TO</td><td>2026.05.03</td><td>kasi,michaz</td><td>Videos</td><td><a href="plugin.video.vavooto/plugin.video.vavooto-2026.05.03.zip">plugin.video.vavooto-2026.05.03.zip</a></td></tr>
-      <tr><td>plugin.video.xwulf</td><td>[B]xWulf[/B]</td><td>0.0.2</td><td>Michaz</td><td>Videos</td><td><a href="plugin.video.xwulf/plugin.video.xwulf-0.0.2.zip">plugin.video.xwulf-0.0.2.zip</a></td></tr>
-      <tr><td>plugin.video.youtube</td><td>YouTube</td><td>7.0.2~alpha4umb</td><td>anxdpanic, bromix</td><td>Videos</td><td><a href="plugin.video.youtube/plugin.video.youtube-7.0.2~alpha4umb.zip">plugin.video.youtube-7.0.2~alpha4umb.zip</a></td></tr>
-      <tr><td>repository.Magnetic</td><td>Magnetic Repo</td><td>1.1.0b</td><td>1-cool-guy</td><td>Repository</td><td><a href="repository.Magnetic/repository.Magnetic-1.1.0b.zip">repository.Magnetic-1.1.0b.zip</a></td></tr>
-      <tr><td>repository.Rising.Tides</td><td>[COLOR red][B]R[/B][/COLOR][COLOR white][B]ising[/B][/COLOR] [COLOR pink][B]T[/B][/COLOR][COLOR white][B]ides[/B][/COLOR] Repository</td><td>1.1</td><td>[COLOR turquoise][B]@mullafabz[/B][/COLOR]</td><td>Repository</td><td><a href="repository.Rising.Tides/repository.Rising.Tides-1.1.zip">repository.Rising.Tides-1.1.zip</a></td></tr>
-      <tr><td>repository.ad0lar</td><td>DEvmIb Repository</td><td>1.0</td><td>Ad0lar, fds97AVVS, DEvmIb</td><td>Repository</td><td><a href="repository.ad0lar/repository.ad0lar-1.0.zip">repository.ad0lar-1.0.zip</a></td></tr>
-      <tr><td>repository.bg</td><td>BG-Repository</td><td>0.3.0</td><td>blauesgruen</td><td>Repository</td><td><a href="repository.bg/repository.bg-0.3.0.zip">repository.bg-0.3.0.zip</a></td></tr>
-      <tr><td>repository.bugatsinho</td><td>Bugatsinho repository</td><td>2.8</td><td>Bugatsinho</td><td>Repository</td><td><a href="repository.bugatsinho/repository.bugatsinho-2.8.zip">repository.bugatsinho-2.8.zip</a></td></tr>
-      <tr><td>repository.jewrepo</td><td>[COLOR purple]JewRepo[/COLOR]</td><td>1.6.0</td><td>JewBMX</td><td>Repository</td><td><a href="repository.jewrepo/repository.jewrepo-1.6.0.zip">repository.jewrepo-1.6.0.zip</a></td></tr>
-      <tr><td>repository.kodinerds</td><td>Kodinerds Addon Repo</td><td>7.0.1.7</td><td>Kodinerds</td><td>Repository</td><td><a href="repository.kodinerds/repository.kodinerds-7.0.1.7.zip">repository.kodinerds-7.0.1.7.zip</a></td></tr>
-      <tr><td>repository.kodiwulf</td><td>Kodiwulf</td><td>0.1.0</td><td>Kodiwulf</td><td>Repository</td><td><a href="repository.kodiwulf/repository.kodiwulf-0.1.0.zip">repository.kodiwulf-0.1.0.zip</a></td></tr>
-      <tr><td>repository.loop</td><td>[COLORlime]Loop[/COLOR] Repository</td><td>3.0.4</td><td>The Loop</td><td>Repository</td><td><a href="repository.loop/repository.loop-3.0.4.zip">repository.loop-3.0.4.zip</a></td></tr>
-      <tr><td>repository.redwizard</td><td>[COLOR red]The Red Repo[/COLOR]</td><td>1.2.2</td><td>[COLOR red]The Red Wizard[/COLOR]</td><td>Repository</td><td><a href="repository.redwizard/repository.redwizard-1.2.2.zip">repository.redwizard-1.2.2.zip</a></td></tr>
-      <tr><td>repository.sandmann79-py3.plugins</td><td>Sandmann79s Repository</td><td>1.0.4</td><td>Sandmann79</td><td>Repository</td><td><a href="repository.sandmann79-py3.plugins/repository.sandmann79-py3.plugins-1.0.4.zip">repository.sandmann79-py3.plugins-1.0.4.zip</a></td></tr>
-      <tr><td>repository.thecrew</td><td>[COLOR orchid]THE CREW REPO[/COLOR]</td><td>0.3.8</td><td>The Crew</td><td>Repository</td><td><a href="repository.thecrew/repository.thecrew-0.3.8.zip">repository.thecrew-0.3.8.zip</a></td></tr>
-      <tr><td>repository.thelab</td><td>TheLab Repository</td><td>25.3.27</td><td>[COLORpurple]• [COLORorchid]Tech [COLORdarkorchid]E [COLORplum]Coyote [COLORpurple]•[/COLOR]</td><td>Repository</td><td><a href="repository.thelab/repository.thelab-25.3.27.zip">repository.thelab-25.3.27.zip</a></td></tr>
-      <tr><td>repository.vstream</td><td>vStream Repository</td><td>0.0.6</td><td>Venom</td><td>Repository</td><td><a href="repository.vstream/repository.vstream-0.0.6.zip">repository.vstream-0.0.6.zip</a></td></tr>
-      </tbody>
-    </table>
+  <section class="grid" aria-label="Repository Übersicht">
+    <article class="card"><h2>ZIPs gesamt</h2><p><strong>17</strong>aus ZIPs/ rekursiv gelesen</p></article>
+    <article class="card"><h2>Repository</h2><p><strong>13</strong>ZIPs/REPOSITORY</p></article>
+    <article class="card"><h2>Video</h2><p><strong>3</strong>ZIPs/VIDEO</p></article>
+    <article class="card"><h2>Programm</h2><p><strong>1</strong>ZIPs/PROGRAMM</p></article>
   </section>
-<!-- DRDEBUG-KODIWULF-INDEX:END -->
+
+  <section class="grid">
+    <article class="card"><h2>Repository XML</h2><p><a href="addons.xml">addons.xml</a></p></article>
+    <article class="card"><h2>Checksum</h2><p><a href="addons.xml.md5">addons.xml.md5</a></p></article>
+    <article class="card"><h2>Kodi Repository Add-on</h2><p><a href="repository.kodiwulf/">repository.kodiwulf/</a></p></article>
+    <article class="card"><h2>ZIP Root</h2><p><a href="ZIPs/">ZIPs/</a></p></article>
+  </section>
+
+  <section class="panel">
+    <div class="panel-head">
+      <h2>Index of /kodiwulf-repo/</h2>
+      <span class="pill">bg.png background active</span>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th></th><th>Name</th><th>Last modified</th><th>Size</th></tr></thead>
+        <tbody>
+          <tr><td class="type">DIR</td><td><a href="ZIPs/">ZIPs/</a></td><td>2026-06-20 03:18:23</td><td>-</td></tr>
+<tr><td class="type">DIR</td><td><a href="ZIPs/REPOSITORY/">ZIPs/REPOSITORY/</a></td><td>2026-06-20 03:17:01</td><td>-</td></tr>
+<tr><td class="type">DIR</td><td><a href="ZIPs/VIDEO/">ZIPs/VIDEO/</a></td><td>2026-06-20 04:00:16</td><td>-</td></tr>
+<tr><td class="type">DIR</td><td><a href="ZIPs/PROGRAMM/">ZIPs/PROGRAMM/</a></td><td>2026-06-20 03:17:57</td><td>-</td></tr>
+<tr><td class="type">FILE</td><td><a href="addons.xml">addons.xml</a></td><td>2026-06-20 05:47:44</td><td>40.3 KB</td></tr>
+<tr><td class="type">FILE</td><td><a href="addons.xml.md5">addons.xml.md5</a></td><td>2026-06-20 05:47:44</td><td>32 B</td></tr>
+<tr><td class="type">DIR</td><td><a href="repository.kodiwulf/">repository.kodiwulf/</a></td><td>2026-06-20 05:40:53</td><td>-</td></tr>
+<tr><td class="type">FILE</td><td><a href="bg.png">bg.png</a></td><td>2026-06-14 23:57:50</td><td>3.74 MB</td></tr>
+<tr><td class="type">FILE</td><td><a href="README.md">README.md</a></td><td>2026-06-14 23:57:50</td><td>1.7 KB</td></tr>
+<tr><td class="type">FILE</td><td><a href="CHANGES.md">CHANGES.md</a></td><td>2026-06-14 23:57:50</td><td>1.1 KB</td></tr>
+<tr><td class="type">FILE</td><td><a href="UPDATE_PROCESS.md">UPDATE_PROCESS.md</a></td><td>2026-06-14 23:57:50</td><td>854 B</td></tr>
+<tr><td class="type">FILE</td><td><a href="index.md">index.md</a></td><td>2026-06-14 23:57:50</td><td>1.1 KB</td></tr>
+<tr><td class="type">FILE</td><td><a href=".nojekyll">.nojekyll</a></td><td>2026-06-14 23:57:50</td><td>0 B</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="panel">
+    <div class="panel-head">
+      <h2>Kodi Add-ons</h2>
+      <span class="pill">real ZIP scan</span>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th></th><th>Add-on</th><th>Version</th><th>Status</th><th>ZIP</th></tr></thead>
+        <tbody>
+          <tr><td class="type">REPO</td><td><a href="ZIPs/REPOSITORY/repository.ad0lar-1.0.zip">repository.ad0lar</a><br><small>Ad0lar, fds97AVVS, DEvmIb</small><br><small>xbmc.addon.repository, xbmc.addon.metadata</small></td><td>1.0</td><td><span class="badge ok">OK</span></td><td><a href="ZIPs/REPOSITORY/repository.ad0lar-1.0.zip">repository.ad0lar-1.0.zip</a><br><small>15.0 KB</small></td></tr>
+<tr><td class="type">REPO</td><td><a href="ZIPs/REPOSITORY/repository.bg-0.3.0.zip">repository.bg</a><br><small>blauesgruen</small><br><small>xbmc.addon.repository, xbmc.addon.metadata</small></td><td>0.3.0</td><td><span class="badge ok">OK</span></td><td><a href="ZIPs/REPOSITORY/repository.bg-0.3.0.zip">repository.bg-0.3.0.zip</a><br><small>334.8 KB</small></td></tr>
+<tr><td class="type">REPO</td><td><a href="ZIPs/REPOSITORY/repository.bugatsinho-2.8.zip">repository.bugatsinho</a><br><small>Bugatsinho</small><br><small>xbmc.addon.repository, xbmc.addon.metadata</small></td><td>2.8</td><td><span class="badge ok">OK</span></td><td><a href="ZIPs/REPOSITORY/repository.bugatsinho-2.8.zip">repository.bugatsinho-2.8.zip</a><br><small>415.5 KB</small></td></tr>
+<tr><td class="type">REPO</td><td><a href="ZIPs/REPOSITORY/repository.jewrepo-1.6.0.zip">repository.jewrepo</a><br><small>JewBMX</small><br><small>xbmc.addon.repository, xbmc.addon.metadata</small></td><td>1.6.0</td><td><span class="badge ok">OK</span></td><td><a href="ZIPs/REPOSITORY/repository.jewrepo-1.6.0.zip">repository.jewrepo-1.6.0.zip</a><br><small>88.1 KB</small></td></tr>
+<tr><td class="type">REPO</td><td><a href="ZIPs/REPOSITORY/repository.kodinerds-7.0.1.7.zip">repository.kodinerds</a><br><small>Kodinerds</small><br><small>xbmc.addon.repository, xbmc.addon.metadata</small></td><td>7.0.1.7</td><td><span class="badge ok">OK</span></td><td><a href="ZIPs/REPOSITORY/repository.kodinerds-7.0.1.7.zip">repository.kodinerds-7.0.1.7.zip</a><br><small>429.5 KB</small></td></tr>
+<tr><td class="type">REPO</td><td><a href="ZIPs/REPOSITORY/repository.loop-3.0.4.zip">repository.loop</a><br><small>The Loop</small><br><small>xbmc.addon.repository, xbmc.addon.metadata</small></td><td>3.0.4</td><td><span class="badge ok">OK</span></td><td><a href="ZIPs/REPOSITORY/repository.loop-3.0.4.zip">repository.loop-3.0.4.zip</a><br><small>419.6 KB</small></td></tr>
+<tr><td class="type">REPO</td><td><a href="ZIPs/REPOSITORY/repository.Magnetic-1.1.0b.zip">repository.Magnetic</a><br><small>1-cool-guy</small><br><small>xbmc.addon.repository, xbmc.addon.metadata</small></td><td>1.1.0b</td><td><span class="badge ok">OK</span></td><td><a href="ZIPs/REPOSITORY/repository.Magnetic-1.1.0b.zip">repository.Magnetic-1.1.0b.zip</a><br><small>417.2 KB</small></td></tr>
+<tr><td class="type">REPO</td><td><a href="ZIPs/REPOSITORY/repository.redwizard-1.2.2.zip">repository.redwizard</a><br><small>[COLOR red]The Red Wizard[/COLOR]</small><br><small>xbmc.addon.repository, xbmc.addon.metadata</small></td><td>1.2.2</td><td><span class="badge ok">OK</span></td><td><a href="ZIPs/REPOSITORY/repository.redwizard-1.2.2.zip">repository.redwizard-1.2.2.zip</a><br><small>84.3 KB</small></td></tr>
+<tr><td class="type">REPO</td><td><a href="ZIPs/REPOSITORY/repository.Rising.Tides-1.1.zip">repository.Rising.Tides</a><br><small>[COLOR turquoise][B]@mullafabz[/B][/COLOR]</small><br><small>xbmc.addon.repository, xbmc.addon.metadata</small></td><td>1.1</td><td><span class="badge ok">OK</span></td><td><a href="ZIPs/REPOSITORY/repository.Rising.Tides-1.1.zip">repository.Rising.Tides-1.1.zip</a><br><small>16.7 KB</small></td></tr>
+<tr><td class="type">REPO</td><td><a href="ZIPs/REPOSITORY/repository.sandmann79-py3.plugins-1.0.4.zip">repository.sandmann79-py3.plugins</a><br><small>Sandmann79</small><br><small>xbmc.addon.repository, xbmc.addon.metadata</small></td><td>1.0.4</td><td><span class="badge ok">OK</span></td><td><a href="ZIPs/REPOSITORY/repository.sandmann79-py3.plugins-1.0.4.zip">repository.sandmann79-py3.plugins-1.0.4.zip</a><br><small>784 B</small></td></tr>
+<tr><td class="type">REPO</td><td><a href="ZIPs/REPOSITORY/repository.thecrew-0.3.8.zip">repository.thecrew</a><br><small>The Crew</small><br><small>xbmc.addon.repository, xbmc.addon.metadata</small></td><td>0.3.8</td><td><span class="badge ok">OK</span></td><td><a href="ZIPs/REPOSITORY/repository.thecrew-0.3.8.zip">repository.thecrew-0.3.8.zip</a><br><small>2.80 MB</small></td></tr>
+<tr><td class="type">REPO</td><td><a href="ZIPs/REPOSITORY/repository.thelab-25.3.27.zip">repository.thelab</a><br><small>[COLORpurple]• [COLORorchid]Tech [COLORdarkorchid]E [COLORplum]Coyote [COLORpurple]•[/COLOR]</small><br><small>xbmc.addon.repository, xbmc.addon.metadata</small></td><td>25.3.27</td><td><span class="badge ok">OK</span></td><td><a href="ZIPs/REPOSITORY/repository.thelab-25.3.27.zip">repository.thelab-25.3.27.zip</a><br><small>2.59 MB</small></td></tr>
+<tr><td class="type">REPO</td><td><a href="ZIPs/REPOSITORY/repository.vstream-0.0.6.zip">repository.vstream</a><br><small>Venom</small><br><small>xbmc.addon.repository, xbmc.addon.metadata</small></td><td>0.0.6</td><td><span class="badge ok">OK</span></td><td><a href="ZIPs/REPOSITORY/repository.vstream-0.0.6.zip">repository.vstream-0.0.6.zip</a><br><small>520.3 KB</small></td></tr>
+<tr><td class="type">VIDE</td><td><a href="ZIPs/VIDEO/plugin.video.vavooto-2026.05.03.zip">plugin.video.vavooto</a><br><small>kasi,michaz</small><br><small>xbmc.python.pluginsource, xbmc.python.module, xbmc.addon.metadata</small></td><td>2026.05.03</td><td><span class="badge ok">OK</span></td><td><a href="ZIPs/VIDEO/plugin.video.vavooto-2026.05.03.zip">plugin.video.vavooto-2026.05.03.zip</a><br><small>8.5 KB</small></td></tr>
+<tr><td class="type">VIDE</td><td><a href="ZIPs/VIDEO/plugin.video.xwulf-0.0.2.zip">plugin.video.xwulf</a><br><small>Michaz</small><br><small>xbmc.python.pluginsource, xbmc.service, xbmc.addon.metadata</small></td><td>0.0.2</td><td><span class="badge ok">OK</span></td><td><a href="ZIPs/VIDEO/plugin.video.xwulf-0.0.2.zip">plugin.video.xwulf-0.0.2.zip</a><br><small>6.14 MB</small></td></tr>
+<tr><td class="type">VIDE</td><td><a href="ZIPs/VIDEO/plugin.video.youtube-7.0.2~alpha4umb.zip">plugin.video.youtube</a><br><small>anxdpanic, bromix</small><br><small>xbmc.python.pluginsource, xbmc.service, xbmc.python.module, xbmc.addon.metadata</small></td><td>7.0.2~alpha4umb</td><td><span class="badge ok">OK</span></td><td><a href="ZIPs/VIDEO/plugin.video.youtube-7.0.2~alpha4umb.zip">plugin.video.youtube-7.0.2~alpha4umb.zip</a><br><small>710.6 KB</small></td></tr>
+<tr><td class="type">PROG</td><td><a href="ZIPs/PROGRAMM/plugin.program.theredwizard-4.3.0.zip">plugin.program.theredwizard</a><br><small>Slam, Sarge, Funsterbe, BYB, Zaxxon709, [COLOR red]The Red Wizard[/COLOR]</small><br><small>xbmc.python.pluginsource, xbmc.service, xbmc.addon.metadata</small></td><td>4.3.0</td><td><span class="badge ok">OK</span></td><td><a href="ZIPs/PROGRAMM/plugin.program.theredwizard-4.3.0.zip">plugin.program.theredwizard-4.3.0.zip</a><br><small>6.69 MB</small></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+
+<section class="panel" id="repository">
+  <div class="panel-head">
+    <div>
+      <h2>Repository-ZIPs</h2>
+      <small>Externe Kodi-Repository-Pakete und Repository-Add-ons.</small>
+    </div>
+    <span class="pill">13 ZIPs</span>
+  </div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th></th><th>Add-on</th><th>Version</th><th>Last modified</th><th>Size</th><th>ZIP</th></tr></thead>
+      <tbody>
+        <tr><td class="type">ZIP</td><td><a href="ZIPs/REPOSITORY/repository.ad0lar-1.0.zip">repository.ad0lar</a><br><small>DEvmIb Repository</small></td><td>1.0</td><td>2026-06-20 03:04:12</td><td>15.0 KB</td><td><a href="ZIPs/REPOSITORY/repository.ad0lar-1.0.zip">Download</a></td></tr><tr><td class="type">ZIP</td><td><a href="ZIPs/REPOSITORY/repository.bg-0.3.0.zip">repository.bg</a><br><small>BG-Repository</small></td><td>0.3.0</td><td>2026-06-20 03:04:08</td><td>334.8 KB</td><td><a href="ZIPs/REPOSITORY/repository.bg-0.3.0.zip">Download</a></td></tr><tr><td class="type">ZIP</td><td><a href="ZIPs/REPOSITORY/repository.bugatsinho-2.8.zip">repository.bugatsinho</a><br><small>Bugatsinho repository</small></td><td>2.8</td><td>2026-06-20 03:12:53</td><td>415.5 KB</td><td><a href="ZIPs/REPOSITORY/repository.bugatsinho-2.8.zip">Download</a></td></tr><tr><td class="type">ZIP</td><td><a href="ZIPs/REPOSITORY/repository.jewrepo-1.6.0.zip">repository.jewrepo</a><br><small>[COLOR purple]JewRepo[/COLOR]</small></td><td>1.6.0</td><td>2026-06-20 03:09:01</td><td>88.1 KB</td><td><a href="ZIPs/REPOSITORY/repository.jewrepo-1.6.0.zip">Download</a></td></tr><tr><td class="type">ZIP</td><td><a href="ZIPs/REPOSITORY/repository.kodinerds-7.0.1.7.zip">repository.kodinerds</a><br><small>Kodinerds Addon Repo</small></td><td>7.0.1.7</td><td>2026-06-14 23:57:50</td><td>429.5 KB</td><td><a href="ZIPs/REPOSITORY/repository.kodinerds-7.0.1.7.zip">Download</a></td></tr><tr><td class="type">ZIP</td><td><a href="ZIPs/REPOSITORY/repository.loop-3.0.4.zip">repository.loop</a><br><small>[COLORlime]Loop[/COLOR] Repository</small></td><td>3.0.4</td><td>2026-06-20 03:13:34</td><td>419.6 KB</td><td><a href="ZIPs/REPOSITORY/repository.loop-3.0.4.zip">Download</a></td></tr><tr><td class="type">ZIP</td><td><a href="ZIPs/REPOSITORY/repository.Magnetic-1.1.0b.zip">repository.Magnetic</a><br><small>Magnetic Repo</small></td><td>1.1.0b</td><td>2026-06-20 03:11:07</td><td>417.2 KB</td><td><a href="ZIPs/REPOSITORY/repository.Magnetic-1.1.0b.zip">Download</a></td></tr><tr><td class="type">ZIP</td><td><a href="ZIPs/REPOSITORY/repository.redwizard-1.2.2.zip">repository.redwizard</a><br><small>[COLOR red]The Red Repo[/COLOR]</small></td><td>1.2.2</td><td>2026-06-20 03:08:07</td><td>84.3 KB</td><td><a href="ZIPs/REPOSITORY/repository.redwizard-1.2.2.zip">Download</a></td></tr><tr><td class="type">ZIP</td><td><a href="ZIPs/REPOSITORY/repository.Rising.Tides-1.1.zip">repository.Rising.Tides</a><br><small>[COLOR red][B]R[/B][/COLOR][COLOR white][B]ising[/B][/COLOR] [COLOR pink][B]T[/B][/COLOR][COLOR white][B]ides[/B][/COLOR] Repository</small></td><td>1.1</td><td>2026-06-20 03:14:21</td><td>16.7 KB</td><td><a href="ZIPs/REPOSITORY/repository.Rising.Tides-1.1.zip">Download</a></td></tr><tr><td class="type">ZIP</td><td><a href="ZIPs/REPOSITORY/repository.sandmann79-py3.plugins-1.0.4.zip">repository.sandmann79-py3.plugins</a><br><small>Sandmann79s Repository</small></td><td>1.0.4</td><td>2026-06-20 03:04:26</td><td>784 B</td><td><a href="ZIPs/REPOSITORY/repository.sandmann79-py3.plugins-1.0.4.zip">Download</a></td></tr><tr><td class="type">ZIP</td><td><a href="ZIPs/REPOSITORY/repository.thecrew-0.3.8.zip">repository.thecrew</a><br><small>[COLOR orchid]THE CREW REPO[/COLOR]</small></td><td>0.3.8</td><td>2026-06-20 03:10:49</td><td>2.80 MB</td><td><a href="ZIPs/REPOSITORY/repository.thecrew-0.3.8.zip">Download</a></td></tr><tr><td class="type">ZIP</td><td><a href="ZIPs/REPOSITORY/repository.thelab-25.3.27.zip">repository.thelab</a><br><small>TheLab Repository</small></td><td>25.3.27</td><td>2026-06-20 03:10:21</td><td>2.59 MB</td><td><a href="ZIPs/REPOSITORY/repository.thelab-25.3.27.zip">Download</a></td></tr><tr><td class="type">ZIP</td><td><a href="ZIPs/REPOSITORY/repository.vstream-0.0.6.zip">repository.vstream</a><br><small>vStream Repository</small></td><td>0.0.6</td><td>2026-06-20 03:11:46</td><td>520.3 KB</td><td><a href="ZIPs/REPOSITORY/repository.vstream-0.0.6.zip">Download</a></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+
+<section class="panel" id="video">
+  <div class="panel-head">
+    <div>
+      <h2>Video-Add-ons</h2>
+      <small>Video-Add-ons, Mediatheken und Streaming-Erweiterungen.</small>
+    </div>
+    <span class="pill">3 ZIPs</span>
+  </div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th></th><th>Add-on</th><th>Version</th><th>Last modified</th><th>Size</th><th>ZIP</th></tr></thead>
+      <tbody>
+        <tr><td class="type">ZIP</td><td><a href="ZIPs/VIDEO/plugin.video.vavooto-2026.05.03.zip">plugin.video.vavooto</a><br><small>VAVOO.TO</small></td><td>2026.05.03</td><td>2026-06-17 16:20:30</td><td>8.5 KB</td><td><a href="ZIPs/VIDEO/plugin.video.vavooto-2026.05.03.zip">Download</a></td></tr><tr><td class="type">ZIP</td><td><a href="ZIPs/VIDEO/plugin.video.xwulf-0.0.2.zip">plugin.video.xwulf</a><br><small>[B]xWulf[/B]</small></td><td>0.0.2</td><td>2026-06-20 04:00:16</td><td>6.14 MB</td><td><a href="ZIPs/VIDEO/plugin.video.xwulf-0.0.2.zip">Download</a></td></tr><tr><td class="type">ZIP</td><td><a href="ZIPs/VIDEO/plugin.video.youtube-7.0.2~alpha4umb.zip">plugin.video.youtube</a><br><small>YouTube</small></td><td>7.0.2~alpha4umb</td><td>2026-06-20 03:09:06</td><td>710.6 KB</td><td><a href="ZIPs/VIDEO/plugin.video.youtube-7.0.2~alpha4umb.zip">Download</a></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+
+<section class="panel" id="programm">
+  <div class="panel-head">
+    <div>
+      <h2>Programm-Add-ons</h2>
+      <small>Programm-, Wizard- und Werkzeug-Add-ons.</small>
+    </div>
+    <span class="pill">1 ZIPs</span>
+  </div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th></th><th>Add-on</th><th>Version</th><th>Last modified</th><th>Size</th><th>ZIP</th></tr></thead>
+      <tbody>
+        <tr><td class="type">ZIP</td><td><a href="ZIPs/PROGRAMM/plugin.program.theredwizard-4.3.0.zip">plugin.program.theredwizard</a><br><small>[COLOR red]The Red Wizard[/COLOR]</small></td><td>4.3.0</td><td>2026-06-20 03:08:19</td><td>6.69 MB</td><td><a href="ZIPs/PROGRAMM/plugin.program.theredwizard-4.3.0.zip">Download</a></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+
+  <section class="panel">
+    <div class="panel-head">
+      <h2>Kodi URLs</h2>
+      <span class="pill">for repository.kodiwulf</span>
+    </div>
+    <div class="urls">https://n-e-o-w-u-l-f.github.io/kodiwulf-repo/
+https://n-e-o-w-u-l-f.github.io/kodiwulf-repo/addons.xml
+https://n-e-o-w-u-l-f.github.io/kodiwulf-repo/addons.xml.md5
+https://n-e-o-w-u-l-f.github.io/kodiwulf-repo/repository.kodiwulf/</div>
+  </section>
+
+  <footer>Generated by KodiWulf Dark Index Builder - deterministic build</footer>
+</main>
 </body>
 </html>

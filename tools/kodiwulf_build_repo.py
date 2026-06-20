@@ -611,6 +611,18 @@ def build(args: argparse.Namespace) -> None:
         include_other=any(x.category == "Other" for x in copied),
     )
     index_action = update_existing_index_html(index_path, managed_block)
+    try:
+        from kodiwulf_addons_xml import write_addons_xml_from_zips
+        _, _, addon_count = write_addons_xml_from_zips(root)
+        print(f"OK: addons.xml rebuilt from ZIPs: {addon_count} add-ons")
+    except Exception as exc:
+        print(f"WARN: addons.xml rebuild from ZIPs failed: {exc}")
+    try:
+        from kodiwulf_dark_index import write_dark_index
+        write_dark_index(root)
+        index_action = f"{index_action}+dark-index"
+    except Exception as exc:
+        print(f"WARN: dark index update failed: {exc}")
 
     if args.write_directory_indexes:
         for category in ("Repository", "Videos", "Other"):
