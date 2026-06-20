@@ -24,3 +24,9 @@ __pycache__/
 .mypy_cache/
 .ruff_cache/
 # Betriebssystem-Dateien
+.drdebug-backups/
+ZIPs/
+tools/*.bak-*
+.gitignore.bak-*
+!tools/
+!tools/kodiwulf_build_repo.py
